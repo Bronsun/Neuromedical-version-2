@@ -1,0 +1,95 @@
+{% extends "main.html" %}
+{% block content %}
+
+<section class="section is-centered" style="margin:25px; background-color:rgb(35, 37, 56); border-radius:25px;">
+<div class="box has-text-centered" style="height:40vh;">
+    <p class="text" id="test"  style="margin-top:100px; font-size:40px; font-weight:500;">Test</p>
+</div>
+<form method="POST" action="/day">
+            {{ form.hidden_tag() }}
+        <div class = "submit">
+            {{ form.answer (id="form",placeholder="Odpowiedź") }}
+        </div>
+       
+        <div class="submit">
+            {{ form.submit(id="subbtn") }}
+        {% if message %}
+        <p class="mess_sent">{{ message }}</p>
+        {% endif %} 
+    </div>
+    </form>
+<div id="prompt" class="box has-text-centered" style="display:none;" ><input class="input has-text-centered" id="mathanswer" placeholder="Wprowadź rozwiązanie", value="", onfocus="this.value=''"><button class="button is-primary" style="margin-top:25px;" id="okbtn" onclick='callInterval()'>OK</button></div>
+<div class="buttons is-centered">
+<button class="button is-center is-primary" id="startbtn" onclick="anim();callInterval();"><strong>Rozpocznij test</strong></button>
+<a class="button is-center is-danger" id="backbtn" href="/panel"><strong>Powrót do panelu</strong></a>
+</div>
+
+</div>
+
+</section>
+
+<script>
+var words = ["AGREST","BIGOS","FASOLA","FURIA","BOMBA","KRAWAT","JAROSZ","TRZCINA","CIASTO","KACZKA","CHMURA","SZYSZKA","NARTY","MATA","GŁOWA"]; 
+var math_questions=["5%*100=","5+7=","12-3+6=","7-2*3=","0*3="]
+var arr = words.concat(math_questions)
+var i = 0;
+var interval = 3000
+var form = document.getElementById('form')
+var submit = document.getElementById('subbtn')
+var test =document.getElementById('test')
+var ok = document.getElementById('okbtn')
+var prompt = document.getElementById("prompt")
+var startbtn = document.getElementById("startbtn")
+form.style.display="none"
+submit.style.display="none"
+
+function callInterval() {
+    
+// set a variable for setInterval
+	var time = setInterval(()=>{
+		test.innerHTML=arr[i];
+        if (i > words.length - 1){
+            interval=300;
+            this.clearInterval(time);
+            prompt.style.display="block"
+            
+            
+            //var matma = prompt("Wpisz wynik działania matemtycznego")
+            // tutaj wstaw instrukcje kiedy ktos cos zle wpisac i nie dawaj kochanie i++
+            if (i > arr.length - 1){
+                this.clearInterval(time);
+                test.innerHTML = "Koniec testu. Wprowadź to co zapamiętałeś w poniższy formularz."
+                test.style.fontSize = "3vh";
+                test.style.padding = " 4vh auto";
+                form.style.display ="unset";
+                submit.style.display = "unset";
+                prompt.style.display="none"; 
+            } 
+        }
+        i++;
+        }, interval);
+    
+}
+var count = 4;
+
+function anim() {
+    if (count > 0) {
+        
+        test.innerHTML = count
+        count--;
+        setTimeout(anim, 700);
+    }
+    else if (count ==1) {
+       
+        callInterval();
+    }
+    else{
+        startbtn.style.display = "none"
+    }
+}
+
+
+
+</script>
+
+{% endblock content %}

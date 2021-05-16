@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+      <div id="menuwrapper">
+        <div id="container">
+          <a href="/users2551" class='elements'>Pacjenci</a>
+          <a href="/add2551" class='elements'>Dodaj użytkownika</a>
+          <a href="/delete2551" class='elements'>Usuń użytkownika</a>
+          <a href="/addWords2551" class = 'elements'>Dodaj słowa</a>
+          <a href="/login" class='elements'>Wyloguj się</a>
+        </div>
+        </div>
+          
+   {% block content %}{% endblock %}
+</body>
+</html>
