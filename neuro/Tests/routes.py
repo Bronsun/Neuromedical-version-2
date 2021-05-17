@@ -20,7 +20,7 @@ def day(day_id):
     form = AnswerForm()
     message=None
     if form.validate_on_submit():
-        answer = UserDay(text=form.answer.data, user_id=current_user.id)
+        answer = UserDay(text=form.answer.data, user_id=current_user.id, day_id=day_id)
         db.session.add(answer)
         db.session.commit()
         message = "Odpowiedz została wysłana!"

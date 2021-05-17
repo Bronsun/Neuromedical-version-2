@@ -30,6 +30,7 @@ class Day(db.Model):
     number = db.Column(db.Integer, unique=False, nullable=False)
     active =  db.Column(db.Boolean, nullable=False, server_default='True')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_day = db.relationship('UserDay', backref='day', lazy=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
     day_texts = db.relationship('DayText', backref='day', lazy=True)
@@ -38,6 +39,7 @@ class UserDay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(255), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -50,6 +52,7 @@ class DayText(db.Model):
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), unique=False, nullable=False)
     text = db.Column(db.String(255), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
