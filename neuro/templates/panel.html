@@ -5,12 +5,12 @@
 
   <div class="column" id="message">
   <div class="box" style="background:transparent;">
-    <article class="message is-primary">
-  <div class="message-header">
+    <article class="message " style="border:none;">
+  <div class="message-header" style="background-color:rgb(35, 37, 56)">
     <p>Cześć {{current_user.name}}</p>
     <button class="open" aria-label="hide" onclick="openMessage()"></button>
   </div>
-  <div class="message-body"id="message-body">
+  <div class="message-body has-text-white"id="message-body" style="background-color:rgb(35, 37, 56)">
    Dziękujemy, ze wziąłeś udział w naszym projekcie 😀. Mamy nadzięje, ze wszystko udało się bez mniejszych problemów. Za nim zaczniesz swoją przygodę z naszym urządzeniem, poświęć chwilę na przeczytanie tej instrukcji. Aktualnie znajdujesz się w swoim panelu. Tutaj wyświetlają się wszystkie istotne informację dotyczące przebiegu Twojego leczenia. W prawym górnym rogu znajduje się rozwijane menu słuzące do nawigacji po swoim koncie. W zakładce <strong>Testy</strong> znajdziesz swoje testy. <strong>Dzienniczek i Problemy</strong> są to zakładki nieoobowiązkowe, w których mozesz dzielić się swoimi opiniami. <strong>Powiadomienia</strong> w tej zakładce znajdują się wszystkie powiadomienia od nas samych!
   </div>
 </article>
@@ -37,12 +37,40 @@
     <h2 class="title has-text-white has-text-centered">📝&nbsp; Testy</h2>
   </div>
    <div class="box" style="background-color:rgb(35, 37, 56)">
-   <p class="text has-text-primary has-text-centered" style="font-weight:700;">Twój następny test</p>
-   <br>
-     
-   <div class="buttons is-centered">
-   <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/tests"><strong>Rozpocznij test!</strong></a>
-   </div>
+  
+  <div class="container has-text-centered py-4">
+    
+    <div class="rows is-multiline is-centered">
+      <div class="columns is-multiline is-centered">
+                 <div class="column is-4 is-centered">
+      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/words">
+       <h2 class="title mb-6 has-text-primary"> Słowa</h2>
+           <figure class="image is-3by2 is-centered">
+        <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/words.svg">
+        </figure>
+        </a>
+      </div>
+
+      <div class="column is-4 is-centered">
+      <a class="box has-text-centered" style="background-color: rgb(47, 46, 75);" href="/tests/memory">
+       <h2 class="title mb-6 has-text-primary">Memory</h2>
+       <figure class="image is-3by2 is-centered">
+        <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/memory.svg">
+        </figure>
+        </a>
+      </div>
+        <div class="column is-4 is-centered">
+      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/numbers">
+       <h2 class="title mb-6 has-text-primary">Cyfry</h2>
+           <figure class="image is-3by2 is-centered">
+        <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/number.svg">
+        </figure>
+        </a>
+      </div>
+
+      </div>
+    </div>
+</div>
   </div>
   </div>
 </div>
@@ -80,7 +108,7 @@
   <p class="text has-text-primary" style="font-weight:700;">Telefon: <p style="color:white;">{{current_user.phone}}</p>
    <br>
    <div class="buttons is-centered">
-  <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/update"><strong>Edytuj</strong></a>
+  <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/editUser"><strong>Edytuj</strong></a>
    </div>
   </div>
   </div>

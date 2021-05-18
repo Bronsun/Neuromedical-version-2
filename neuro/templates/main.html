@@ -28,6 +28,14 @@
   background-color:rgb(108, 102, 251) !important;
   color:white !important;
 }
+.navbarlinkslogout{
+  transition:0.5s ease !important;
+  color: red !important;
+}
+.navbarlinkslogout:hover {
+  background-color:red !important;
+  color:white !important;
+}
 .navbar-dropdown{
   transition:0.2s ease !important;
 }
@@ -39,7 +47,7 @@
             <a class="navbar-item" href="/">
               <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
             </a>
-            <a role="button" class="navbar-burger " style="color:white; border-radius:25px;" aria-label="menu" aria-expanded="false" data-target="menu">
+            <a role="button" class="navbar-burger " style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -47,26 +55,27 @@
             </div>
             
             
-        <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;">
+        <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
             <div class="navbar-start">
                 <div class="navbar-item  is-hoverable">
                     <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
                    <i class="fas fa-brain" style="color:white;"></i>&nbsp; Menu</a>
-                    <div class="navbar-dropdown" style="border-radius:4px;">
-                        <a class="navbar-item navbarlinks">
+                    <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+ backdrop-filter: blur(5px);">
+                        <a class="navbar-item has-text-white navbarlinks">
                           O projekcie
                         </a>
-                         <a class="navbar-item navbarlinks" >
+                         <a class="navbar-item has-text-white navbarlinks" >
                           Zgłoś się!
                         </a>
-                        <a class="navbar-item navbarlinks" >
+                        <a class="navbar-item has-text-white navbarlinks" >
                           Kontakt
                         </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item navbarlinks" >
+                        <hr class="navbar-divider" style="margin:10px;">
+                        <a class="navbar-item has-text-white navbarlinks" >
                           Zgłoś problem
                         </a>
-                        <a class="navbar-item navbarlinks" >
+                        <a class="navbar-item has-text-white navbarlinks " >
                             Regulamin
                         </a>
                 </div>    
@@ -81,22 +90,23 @@
          <div class="navbar-item  is-hoverable">
                     <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
                    <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
-                    <div class="navbar-dropdown" style="border-radius:4px;">
-                        <a class="navbar-item navbarlinks"  href="/panel">
+                    <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+ backdrop-filter: blur(5px);">
+                        <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
                           🎛&nbsp; Panel
                         </a>
-                         <a class="navbar-item navbarlinks"  href="/tests">
+                         <a class="navbar-item navbarlinks has-text-white"  href="/tests">
                          📝&nbsp; Testy
                         </a>
-                        <a class="navbar-item navbarlinks"  href="/notes">
+                        <a class="navbar-item navbarlinks  has-text-white"  href="/notes">
                          🗓&nbsp; Dzienniczek
                         </a>
                    
-                        <hr class="navbar-divider">
-                        <a class="navbar-item navbarlinks" >
+                        <hr class="navbar-divider" style="margin:10px;">
+                        <a class="navbar-item navbarlinks  has-text-white" >
                           Pomoc
                         </a>
-                        <a class="navbar-item has-text-danger navbarlinks" style="border-radius:4px;" href="/logout">
+                        <a class="navbar-item navbarlinkslogout" style="border-radius:4px;" href="/logout">
                             Wyloguj się
                         </a>
                 </div>    

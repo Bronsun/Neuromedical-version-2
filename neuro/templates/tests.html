@@ -1,46 +1,22 @@
 {% extends "main.html" %}
 {% block content %}
-  <div class="box" style="background:transparent;">
-    <article class="message is-warning">
-  <div class="message-header">
-    <p>Instrukcja</p>
-  
-  </div>
-  <div class="message-body"id="message-body">
-   Test pamięci działa w następujący sposób:<br>
-   Po wybraniu odpowiedniego dnia i rozpoczęciu testu, zostanie wyświetlonych 15 słów. Nalezy zapamiętać jak największą ilość. Po wyświetleniu się wszystkich słów zostaną wyświetlone proste zadania matemtyczne.<br>
-   <strong>Błędnie rozwiązane zadanie nie wpływa na wynik końcowy</strong>.<br>
-   Po rozwiązaniu zadań nalezy wypełnić formularz słowami, które się pamięta. Kolejność nie jest istotna.<br>
-   Słowa NALEZY wpisywać po przecinku (np. ARBUZ,MARCHEWKA,ROWER), a następnie kliknąć przycisk wyślij.
-  </div>
-</article>
-  </div>
+
+
 <section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
 
 
   <div class="container has-text-centered py-4">
-   <h2 class="title mb-6 has-text-primary">Test pamięci długiej</h2>
-    <h2 class="title mb-6 has-text-primary">Wybierz dzień</h2>
+    <h2 class="title mb-6 has-text-primary">Wybierz rodzaj testu</h2>
     <div class="rows is-multiline is-centered">
       <div class="columns is-multiline is-centered">
-       {%for days in day %}
-      <div class="column is-4 is-centered">
-      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/{{days.id}}">
-        <h4 class="title"style="color:rgb(108, 102, 251);"> Dzień  &nbsp;{{days.number}}</h4>
+                 <div class="column is-4 is-centered">
+      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/words">
+       <h2 class="title mb-6 has-text-primary">Zapamiętaj słowa</h2>
+           <figure class="image is-3by2 is-centered">
+        <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/words.svg">
+        </figure>
         </a>
       </div>
-      {%endfor%}
-      </div>
-    </div>
-</div>
-</section>
-<section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
-
-
-  <div class="container has-text-centered py-4">
-    <h2 class="title mb-6 has-text-primary">Testy pamięci krótkiej</h2>
-    <div class="rows is-multiline is-centered">
-      <div class="columns is-multiline is-centered">
 
       <div class="column is-4 is-centered">
       <a class="box has-text-centered" style="background-color: rgb(47, 46, 75);" href="/tests/memory">
@@ -51,7 +27,7 @@
         </a>
       </div>
         <div class="column is-4 is-centered">
-      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/memory">
+      <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/numbers">
        <h2 class="title mb-6 has-text-primary">Zapamiętaj liczbę</h2>
            <figure class="image is-3by2 is-centered">
         <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/number.svg">

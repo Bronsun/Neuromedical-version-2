@@ -25,10 +25,6 @@ def account():
 @login_required
 def editUser():
     form = UpdateForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-    
-
     return render_template('edit_user.html',form=form)
 
 

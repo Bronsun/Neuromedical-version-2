@@ -12,8 +12,13 @@ Tests = Blueprint('Tests',__name__)
 def tests():
     day = Day.query.all()
     return render_template('tests.html', day=day)
+@Tests.route("/tests/words",methods=['GET','POST'])
+@login_required
+def wordss():
+    day = Day.query.all()
+    return render_template('words.html', day=day)
 
-@Tests.route("/tests/<int:day_id>",methods=['GET','POST'])
+@Tests.route("/tests/words/<int:day_id>",methods=['GET','POST'])
 @login_required
 def day(day_id):
     day = Day.query.get_or_404(day_id)
@@ -27,9 +32,9 @@ def day(day_id):
     return render_template('day.html', day=day,message=message,form=form)
 
 
-@Tests.route("/tests/memory",methods=['GET','POST'])
+@Tests.route("/tests/numbers",methods=['GET','POST'])
 @login_required
 def memory():
-    return render_template('memory.html')
+    return render_template('numbers.html')
 
 
