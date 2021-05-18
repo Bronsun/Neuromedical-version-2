@@ -1,16 +1,21 @@
 {% extends "main.html" %}
 {% block content %}
+<style>
+::placeholder{
+  color:white !important;
+}
 
-<section class="section" style="margin:25px; border-radius:25px; background-color:rgb(35, 37, 56);">
-    <div class="box"style="border-radius:25px; ">
+</style>
+<section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56); margin:25px;">
+    <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56); margin:25px;  ">
         
         <div class="field">
-            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3">Zarejestruj się</h1>
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Zarejestruj się</h1>
             <form method="POST" action="">
                 {{form.hidden_tag()}}
                 {% if form.email.errors %}
             <p class="control has-icons-left has-icons-right has-text-danger">
-              {{ form.email(class="input", placeholder="Email*")}}
+              {{ form.email(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
               </span>
@@ -21,7 +26,7 @@
               {% endfor %}
             {% else %}
             <p class="control has-icons-left has-icons-right">
-                {{ form.email(class="input", placeholder="Email*")}}
+                {{ form.email(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
@@ -29,7 +34,7 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-                {{ form.name(class="input", placeholder="Imię i nazwisko*")}}
+                {{ form.name(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Imię i nazwisko*")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -37,7 +42,7 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-                {{ form.phone(class="input", placeholder="Numer telefonu: +48666777888")}}
+                {{ form.phone(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Numer telefonu: +48666777888")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -47,7 +52,7 @@
           <div class="field">
             {% if form.password.errors %}
             <p class="control has-icons-left">
-                {{ form.password(class="input", placeholder="Hasło*")}}
+                {{ form.password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło*")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -57,7 +62,7 @@
             {% endfor %}
             {% else %}
             <p class="control has-icons-left has-icons-right">
-                {{ form.password(class="input", placeholder="Hasło*")}}
+                {{ form.password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło*")}}
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>
@@ -66,7 +71,7 @@
           <div class="field">
             {% if form.confirm_password.errors %}
             <p class="control has-icons-left">
-                {{ form.confirm_password(class="input", placeholder="Hasło Raz Jeszcze*")}}
+                {{ form.confirm_password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło Raz Jeszcze*")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -76,13 +81,13 @@
             {% endfor %}
             {% else %}
             <p class="control has-icons-left has-icons-right">
-                {{ form.confirm_password(class="input", placeholder="Hasło Raz Jeszcze*")}}
+                {{ form.confirm_password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło Raz Jeszcze*")}}
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>
             {% endif %}
             <label class="checkbox">
-            <input type="checkbox" name="agree"/>
+            <input type="checkbox" name="agree" style="background-color:green;"/>
             Zapoznałem się z <a href="/terms">regulaminem</a> i <a href="/privacy-policy">polityką prywatności</a>
           </label>
          

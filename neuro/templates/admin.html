@@ -1,22 +1,130 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
-</head>
-<body>
-      <div id="menuwrapper">
-        <div id="container">
-          <a href="/users2551" class='elements'>Pacjenci</a>
-          <a href="/add2551" class='elements'>Dodaj użytkownika</a>
-          <a href="/delete2551" class='elements'>Usuń użytkownika</a>
-          <a href="/addWords2551" class = 'elements'>Dodaj słowa</a>
-          <a href="/login" class='elements'>Wyloguj się</a>
+{% extends "main.html" %}
+{% block content %}
+<style>
+@media screen and (max-width: 1068px) {
+  #menu-toggle:checked + .nav-menu {
+    display: block;
+  }
+}
+</style>
+
+
+<section class="main-content columns is-fullheight">
+  
+  <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile " style="background-color:rgb(35, 37, 56); border-radius:4px;">
+    <p class="menu-label is-hidden-touch">Navigation</p>
+    <ul class="menu-list">
+      <li>
+        <a href="#" class="is-active">
+          <span class="icon"><i class="fa fa-list"></i></span> Lista
+        </a>
+      </li>
+      <li>
+        <a href="#" >
+          <span class="icon"><i class="fa fa-plus"></i></span> Dodaj
+        </a>
+
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon is-small"><i class="fa fa-person-booth"></i></span> Pacjent
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon is-small"><i class="fa fa-calendar-day"></i></span> Dzień
+            </a>
+          </li>
+             <li>
+            <a href="#">
+              <span class="icon is-small"><i class="fa fa-user-alt"></i></span> Admin
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="">
+          <span class="icon"><i class="fa fa-info"></i></span> About
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="container column is-10">
+    <div class="section">
+ <div class="container">
+    <h2 class="title has-text-primary">List pacjentów</h2>
+
+    <div class="columns has-text-centered">
+      <div class="column is-3">
+        <div class="box has-background-primary">
+          <h3 class="title is-2 has-text-white">448</h3>
+          <p class="subtitle has-text-white">Total Tickets</p>
         </div>
+      </div>
+      <div class="column is-3">
+        <div class="box has-background-danger">
+          <h3 class="title is-2 has-text-white">81</h3>
+          <p class="subtitle has-text-white">Responded</p>
         </div>
-          
-   {% block content %}{% endblock %}
-</body>
-</html>
+      </div>
+      <div class="column is-3">
+        <div class="box has-background-success has-text-white">
+          <h3 class="title is-2 has-text-white">208</h3>
+          <p class="subtitle has-text-white">Resolved</p>
+        </div>
+      </div>
+      <div class="column is-3">
+        <div class="box has-background-warning">
+          <h3 class="title is-2 has-text-white">159</h3>
+          <p class="subtitle has-text-white">Pending</p>
+        </div>
+      </div>
+    </div>
+    <table class="table is-fullwidth" style="overflow:scroll;background-color:rgb(35, 37, 56);color:white; ">
+      <thead>
+        <tr ><th scope="col"style="color:white;">ID #</th><th scope="col"style="color:white;">Opened By</th><th scope="col"style="color:white;">Cust. Email</th><th scope="col"style="color:white;">Subject</th><th class="has-text-centered" scope="col">Status</th><th class="has-text-centered" scope="col">Assign to</th><th class="has-text-centered" scope="col">Date</th><th class="has-text-centered" scope="col">Action</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>348</td>
+          <td>
+            <a href="#">
+              <div class="media">
+               
+                <div class="media-content">Lauren North</div>
+              </div>
+            </a>
+          </td>
+          <td>lauren@gmail.com</td>
+          <td>Where are my files?</td>
+          <td class="has-text-centered"><span class="tag is-warning">New</span></td>
+          <td class="has-text-centered">Dinesh Chugtai</td>
+          <td class="has-text-centered">18-11-2018</td>
+          <td class="has-text-centered"><a href="#">Edit</a></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <nav style="margin:25px;">
+  <div class="container">
+    <div class="pagination" role="navigation" aria-label="pagination">
+      <a class="pagination-previous">Previous</a><a class="pagination-next">Next page</a>
+      <ul class="pagination-list">
+        <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+        <li><span class="pagination-ellipsis">…</span></li>
+        <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+        <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+        <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+        <li><span class="pagination-ellipsis">…</span></li>
+        <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</section>
+
+
+{%endblock content%}

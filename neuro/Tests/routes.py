@@ -27,6 +27,9 @@ def day(day_id):
     return render_template('day.html', day=day,message=message,form=form)
 
 
-
+@Tests.route("/tests/memory",methods=['GET','POST'])
+@login_required
+def memory():
+    return render_template('memory.html')
 
 

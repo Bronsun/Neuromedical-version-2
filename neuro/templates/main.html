@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: rgb(47, 46, 75)" >
+<html style="background-color: rgb(47, 46, 75);" >
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -14,9 +14,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
   </head>
+<style>
+.navbar-link:hover{
+  background-color:gray !important;
+}
+.navbar-link{
+  transition:0.5s ease !important;
+}
+.navbarlinks{
+  transition:0.5s ease !important;
+}
+.navbarlinks:hover {
+  background-color:rgb(108, 102, 251) !important;
+  color:white !important;
+}
+.navbar-dropdown{
+  transition:0.2s ease !important;
+}
 
+</style>
 <body id="motion" style="background-color: rgb(47, 46, 75);color:white;">
-   <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:25px; margin:20px; background-color:transparent; color:white;">
+   <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
               <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
@@ -29,26 +47,26 @@
             </div>
             
             
-        <div id="menu" class="navbar-menu" style="color:white; border-radius:25px;">
+        <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;">
             <div class="navbar-start">
                 <div class="navbar-item  is-hoverable">
-                    <a class="navbar-link has-background-white" style="border-radius:25px;">
-                   <i class="fas fa-brain"></i>&nbsp; Menu</a>
-                    <div class="navbar-dropdown" style="border-radius:25px;">
-                        <a class="navbar-item" style="border-radius:25px;">
+                    <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
+                   <i class="fas fa-brain" style="color:white;"></i>&nbsp; Menu</a>
+                    <div class="navbar-dropdown" style="border-radius:4px;">
+                        <a class="navbar-item navbarlinks">
                           O projekcie
                         </a>
-                         <a class="navbar-item" style="border-radius:25px;">
+                         <a class="navbar-item navbarlinks" >
                           Zgłoś się!
                         </a>
-                        <a class="navbar-item" style="border-radius:25px;">
+                        <a class="navbar-item navbarlinks" >
                           Kontakt
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item" style="border-radius:25px;">
+                        <a class="navbar-item navbarlinks" >
                           Zgłoś problem
                         </a>
-                        <a class="navbar-item" style="border-radius:25px;">
+                        <a class="navbar-item navbarlinks" >
                             Regulamin
                         </a>
                 </div>    
@@ -61,26 +79,24 @@
                  
       <div class="navbar-item">
          <div class="navbar-item  is-hoverable">
-                    <a class="navbar-link has-background-white" style="border-radius:25px;">
-                   <i class="fas fa-user"></i> &nbsp; {{current_user.name}}</a>
-                    <div class="navbar-dropdown" style="border-radius:25px;">
-                        <a class="navbar-item" style="border-radius:25px;" href="/panel">
+                    <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
+                   <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
+                    <div class="navbar-dropdown" style="border-radius:4px;">
+                        <a class="navbar-item navbarlinks"  href="/panel">
                           🎛&nbsp; Panel
                         </a>
-                         <a class="navbar-item" style="border-radius:25px;" href="/tests">
+                         <a class="navbar-item navbarlinks"  href="/tests">
                          📝&nbsp; Testy
                         </a>
-                        <a class="navbar-item" style="border-radius:25px;" href="/note">
+                        <a class="navbar-item navbarlinks"  href="/notes">
                          🗓&nbsp; Dzienniczek
                         </a>
-                         <a class="navbar-item" style="border-radius:25px;" href="/problems">
-                         🚨&nbsp; Uwagi
-                        </a>
+                   
                         <hr class="navbar-divider">
-                        <a class="navbar-item" style="border-radius:25px;">
+                        <a class="navbar-item navbarlinks" >
                           Pomoc
                         </a>
-                        <a class="navbar-item has-text-danger" style="border-radius:25px;" href="/logout">
+                        <a class="navbar-item has-text-danger navbarlinks" style="border-radius:4px;" href="/logout">
                             Wyloguj się
                         </a>
                 </div>    
@@ -90,10 +106,10 @@
       {% else %}
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button has-text-white" style="border-radius:25px; border:none; background-color:rgb(108, 102, 251);" href="/register">
+                <a class="button has-text-white" style="border-radius:4px; border:none; background-color:rgb(108, 102, 251);" href="/register">
                   <strong>Zarejestruj się</strong>
                 </a>
-                <a class="button is-primary" style="border-radius:25px;" href="/login">
+                <a class="button is-primary" style="border-radius:4px;" href="/login">
                   <strong> Zaloguj się</strong>
                 </a>
               </div>
@@ -112,290 +128,43 @@
  {% block content %}
  
 
- <section class="section"  >
-  <div class="container py-4" style=" border-radius:25px; padding:40px; text-align:justify">
-    <h2 class="title has-text-centered mb-6 "style="color:rgb(108, 102, 251);">REVOLUTION IS HERE.</h2>
-    <div class="columns is-vcentered">
-      <div class="column">
-        <h2 class="title is-spaced has-text-primary">Introducing VGuard®</h2>
-        <p class="subtitle has-text-white">We present the first electrostimulating medical device targeting brain structures responsible for memory consolidation. VGuard is the first non-invasive home use electronic device dedicated specially for patients suffering from Alzheimer's disease to boost memory and make their life easier.</p>
-        <a class="button "style="background-color:rgb(108, 102, 251); color:white; border:none;" href="#"><strong>Dowiedz się więcej!</strong></a>
-      </div>
-      <div class="column"><img src="static/photos/marketing/brain.svg" alt=""></div>
-    </div>
-    
-    
-  </div>
-</section>
-<section class="section ">
-  <div class="container py-r">
-    <h2 class="title has-text-primary">What is Vguard?</h2>
-    <div class="columns">
-      <div class="column is-9"><a href="#">  <iframe width="700" height="550" style="border-radius:25px;" src="https://www.youtube.com/embed/p4B51tkPly8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-      <div class="column is-3">
-        <div class="columns is-mobile is-multiline">
-          <div class="column is-4-mobile is-12-tablet"><a href="#" ><img style="border-radius:25px;" src="static/photos/marketing/vguard1.jpeg" alt=""></a></div>
-          <div class="column is-4-mobile is-12-tablet"><a href="#"><img style="border-radius:25px;" src="static/photos/marketing/vguard2.jpeg" alt=""></a></div>
-          <div class="column is-4-mobile is-12-tablet"><a href="#"><img style="border-radius:25px;" src="static/photos/marketing/vguard3.jpeg" alt=""></a></div>
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column is-half">
-        <h4 class="title is-spaced is-4 "style="color:rgb(108, 102, 251);">Client: K-Hole</h4>
-        <p class="subtitle has-text-white">We are constantly looking for new partners to migrate onto the Piper Net. The future of the internet is here - venture towards it with Pied Piper!</p>
-      </div>
-    </div>
-  </div>
+ 
 </section>
 
-<section class="section">
-  <div class="container has-text-centered py-4">
-    <h2 class="title mb-6 has-text-primary">What's So Great About VGuard?</h2>
-    <div class="columns is-multiline is-centered">
-      <div class="column is-8 is-4-widescreen mb-5">
-        <div class="block"><img src="static/photos/marketing/old.svg" alt=""></div>
-        <h4 class="title" style="color:rgb(108, 102, 251);"><small class="number">1</small>For every patient</h4>
-        <p>The VGuard device is dedicated for patients with mild cognitive impairment (MCI), specially for patients with Alzheimer’s disease or dementia above 60 years old.</p>
-      </div>
-      <div class="column is-8 is-4-widescreen mb-5">
-        <div class="block"><img src="static/photos/marketing/pioneers.svg" alt=""></div>
-        <h4 class="title" style="color:rgb(108, 102, 251);"><small class="number">2</small> Pioneers</h4>
-        <p>VGuard device will be a pioneering solution on a global scale, introducing a new method of therapy delaying the development or reducing symptoms of the disease.</p>
-      </div>
-      <div class="column is-8 is-4-widescreen mb-5">
-        <div class="block"><img src="static/photos/marketing/easy.svg" alt=""></div>
-        <h4 class="title" style="color:rgb(108, 102, 251);"><small class="number">3</small> Easy to use</h4>
-        <p>VGuard consists of a headband with a built-in neurostimulator. The device will be working in wireless bluetooth connection to personal mobile devices, what gives great opportunity to monitor treatment compliance.</p>
-      </div>
+<footer class="footer " style="background-color:rgb(35, 37, 56);"><div class="container">
+  <div class="columns is-desktop">
+    <div class="column is-5">
+      <h2 class="title is-5 has-text-primary ">Neuromedical</h2>
+      <p class="block">Everything we are doing is to help people</p>
+      <div class="buttons "><a class="button is-black" href="#"><img src="static/photos/marketing/facebook-f.svg" alt=""></a></div>
     </div>
-    <div class="buttons is-centered"><a class="button is-primary" href="#">Learn more</a></div>
+    <div class="column">
+      <h3 class="title is-6 has-text-primary">Products</h3>
+      <ul><li><a href="#" style="color:white;" >Features</a></li>
+        <li><a href="#"style="color:white;" >Enterprise</a></li>
+        <li><a href="#" style="color:white;">Support</a></li>
+        <li><a href="#"style="color:white;" >ICO</a></li>
+      </ul></div>
+    <div class="column">
+      <h6 class="title is-6 has-text-primary">About Pied Piper</h6>
+      <ul><li><a href="#"style="color:white;">Our team</a></li>
+        <li><a href="#" style="color:white;">Careers</a></li>
+        <li><a href="#"style="color:white;" >Press</a></li>
+        <li><a href="#"style="color:white;" >Stores</a></li>
+      </ul></div>
+    <div class="column">
+      <h6 class="title is-6 has-text-primary">Contact</h6>
+      <ul><li><a href="mailto:info@neuromedical.pl" class="has-text-white">info@neuromedical.pl</a></li>
+        <li><a href="#"class="has-text-white" >+48 510 076 436</a></li>
+        <li><a href="#" class="has-text-white">Natolin 15, 92-701 Łódź</a></li>
+      </ul></div>
   </div>
-</section>
-<section class="section">
-  <div class="container">
-    <div class="columns py-3 is-centered is-vcentered">
-      <div class="column is-6 pr-6">
-        <div class="mb-6">
-        
-          <h2 class="mt-4 title is-size-3 has-text-primary">Key Features</h2>
-        </div>
-        <div class="is-flex mb-6">
-          <div class="mr-4 has-text-primary">
-            <svg class="image is-32x32" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="title is-size-5 is-spaced mb-3" style="color:rgb(108, 102, 251);">For every patient</h3>
-            <p class="subtitle has-text-white">The VGuard device is dedicated for patients with mild cognitive impairment (MCI), specially for patients with Alzheimer’s disease or dementia above 60 years old.</p>
-          </div>
-        </div>
-        <div class="is-flex mb-6">
-          <div class="mr-4 has-text-primary">
-            <svg class="image is-32x32" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="title is-size-5 is-spaced mb-3" style="color:rgb(108, 102, 251);">Pioneers</h3>
-            <p class="subtitle has-text-white">VGuard device will be a pioneering solution on a global scale, introducing a new method of therapy delaying the development or reducing symptoms of the disease.</p>
-          </div>
-        </div>
-        <div class="is-flex">
-          <div class="mr-4 has-text-primary" >
-            <svg class="image is-32x32" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="title is-size-5 is-spaced mb-3" style="color:rgb(108, 102, 251);">Easy to use</h3>
-            <p class="subtitle has-text-white">VGuard consists of a headband with a built-in neurostimulator. The device will be working in wireless bluetooth connection to personal mobile devices, what gives great opportunity to monitor treatment compliance.</p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="p-6" style="position: relative;"><img class="is-relative is-radius is-fullwidth is-object-cover is-radius" style="height: auto; max-height: 600px; z-index: 10; border-radius:25px;" src="static/photos/marketing/key.svg" alt=""><img class="is-hidden-mobile is-absolute is-top is-left" src="metis-assets/elements/blob-tear.svg" alt=""><img class="is-hidden-mobile is-absolute is-bottom is-right" style="border-radius:25px;" src="metis-assets/elements/blob-tear.svg" alt=""></div>
-      </div>
-    </div>
+  <hr><div class="columns">
+  <div class="column"><a href="#" style="color:rgb(108, 102, 251);">Terms and conditions</a></div>
+  <div class="column has-text-right-tablet">
+    <p class="subtitle is-6">© 2021 Neuromedical. All right reserved. Created by <a href="https://yokan.studio">Yokan Software House</a></p>
   </div>
-</section>
-<section class="section">
-  <div class="container has-text-centered py-4">
-    <h2 class="title mb-6 has-text-primary">What's So Great About PiperNet?</h2>
-    <div class="columns">
-      <div class="column">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="static/photos/marketing/app.svg" alt=""></figure></div>
-        </div>
-        <p class="block">The VGuard device is dedicated for patients with mild cognitive impairment (MCI), specially for patients with Alzheimer’s disease or dementia above 60 years old.</p>
-        <h5 class="title is-5">Colin</h5>
-        <p class="subtitle">CEO at K-Hole</p>
-      </div>
-      <div class="column">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <p class="block">This is such a great product that I feel aroused every time I use it. I didn't know the boys would be able to build, but god damn it, they did it. Kickass!</p>
-        <h5 class="title is-5">Russ Hanneman</h5>
-        <p class="subtitle">Investor, Angel, Great Guy</p>
-      </div>
-      <div class="column">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <p class="block">Even though I have been dismantled, I live on as an artificial intelligence on the PiperNet. I really like it here. Still waiting for Jared to Piper-chat with me sometime.</p>
-        <h5 class="title is-5">Fiona</h5>
-        <p class="subtitle">Artificial Intelligence</p>
-      </div>
-    </div>
   </div>
-</section>
-<section class="section">
-  <div class="container has-text-centered py-4">
-    <h2 class="title has-text-primary">Our Team</h2>
-    <p class="subtitle mb-6 has-text-white">We are the guys that made this whole thing possible</p>
-    <div class="columns is-centered is-multiline py-5">
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="static/photos/marketing/adam.jpeg" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5 has-text-white">Dr. Adam Broncel </h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">Medical Director</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="static/photos/marketing/tamir.jpeg" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5 has-text-white"> Dr. Tamir Ben David</h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">Main Project Engineer</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="static/photos/marketing/yossi.jpeg" alt=""></figure></div>
-        </div>
-         <h5 class="title is-5 has-text-white"> Yossi Bornstein</h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">Co-Founder</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="static/photos/marketing/agnieszka.jpeg" alt=""></figure></div>
-        </div>
-           <h5 class="title is-5 has-text-white"> Agnieszka Jarecka</h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">R&D Project Development Manager</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-            <h5 class="title is-5 has-text-white">  Prof. Jan Konopacki </h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">Neurophysiology Scientific Investigator</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-             <h5 class="title is-5 has-text-white"> Prof. Piotr Gałecki</h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">Main Clinical Investigator</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-           <h5 class="title is-5 has-text-white"> Agnieszka Jarecka</h5>
-        <p class="subtitle is-6" style="color:rgb(108, 102, 251);">R&D Project Development Manager</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container py-4">
-    <h2 class="title has-text-centered mb-6 has-text-primary">Publications</h2>
-    <div class="mb-6">
-      <div class="card block">
-        <div class="card-content">
-        
-          <div class="media">
-            <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="static/photos/marketing/reasearch.png" alt=""></figure></div>
-            <div class="media-content">
-              <h3 class="title is-4">Medial septal cholinergic mediation of hippocampal theta rhythm induced by vagal nerve stimulation.</h3>
-              <p>Broncel A., Bocian R., Kłos-Wojtczak P., Konopacki J. 2018. Medial septal cholinergic mediation of hippocampal theta rhythm induced by vagal nerve stimulation. Plos One. 5;13(11).</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card block">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="static/photos/marketing/reasearch.png" alt=""></figure></div>
-            <div class="media-content">
-              <h3 class="title is-4">Some technical issues of vagal nerve stimulation. An approach using a hippocampal formation theta rhythm. </h3>
-              <p>Broncel A., Bocian R., Kłos-Wojtczak P., Konopacki J. 2018. Some technical issues of vagal nerve stimulation. An approach using a hippocampal formation theta rhythm. Brain Res Bull. 140:402-410.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card block">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="static/photos/marketing/reasearch.png" alt=""></figure></div>
-            <div class="media-content">
-              <h3 class="title is-4">Vagus nerve stimulation produces a hippocampal formation theta rhythm in anesthetized rats.</h3>
-              <p>Broncel A., Bocian R., Kłos-Wojtczak P., Konopacki J. 2017. Vagus nerve stimulation produces a hippocampal formation theta rhythm in anesthetized rats. Brain Res. 1675:41-50.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card block">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left"><figure class="image is-64x64"><img class="is-rounded" src="static/photos/marketing/reasearch.png" alt=""></figure></div>
-            <div class="media-content">
-              <h3 class="title is-4">Transcutaneous vagus nerve stimulation (tVNS) enhances divergent thinking.</h3>
-              <p>Calzato L.S., Ritter S.M., Steenbergen L. 2018. Transcutaneous vagus nerve stimulation (tVNS) enhances divergent thinking. Neuropsychologia 111 (2018) 72–76.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="buttons is-centered"><a class="button is-primary" href="#">Read more</a></div>
-  </div>
-</section>
-
-<footer class="footer has-background-black">
-  <div class="container">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item"><a class="title is-4 has-text-white" href="#">Neuromedical</a>
-      
-        </div>
-          <p class="subtitle has-text-gray">Everything we are doing is to help people</p>
-
-      </div>
-      <div class="level-right"><a class="level-item" href="#">Features</a><a class="level-item" href="#">Enterprise</a><a class="level-item" href="#">Support</a><a class="level-item" href="#">ICO</a></div>
-    </div>
-    <hr>
-    <div class="columns">
-      <div class="column">
-        <div class="buttons"><a class="button" href="#"></a>
-        <a class="button" href="#"></a>
-        <a class="button" href="#"></a>
-        </div>
-      </div>
-      <div class="column">
-        <P>Contact info</P>
-Neuromedical Sp. z o.o.
-+48 510 076 436
-+48 503 993 063
-office@neuromedical.pl
-Natolin 15
-92-701 Łódź, Poland</P>
-      </div>
-      <div class="column has-text-centered has-text-right-tablet">
-        <p class="subtitle is-6">© 2020 Neuromedical Sp. z o.o. All right reserved.</p>
-      </div>
-    </div>
   </div>
 </footer>
    {% endblock %}

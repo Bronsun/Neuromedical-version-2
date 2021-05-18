@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+
+<section class="section has-text-centered">
+
+<div class="box" style="border:none;outline:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white; text-align:center">
+<p class="text" id="test">⬇ Test pamięci krótkiej. Na ułamek sekundy zostanie wyświetlona cyfra z przedziału od 0 - 100000. Twoim zadaniem jest wpisanie jej w ponizszy formularz. Aby rozpocząć kliknij start ⬇</p>
+</div>
+<div class="box" style="border:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white;">
+<p>Liczba to: </p>
+<input class="input" style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white; text-align:center"  placeholder="np.45"></input>
+</div>
+<button class="button is-primary" onclick="startTest()">Start</button>
+</section>
+
+<script>
+var test = document.getElementById('test')
+
+function startTest(){
+    var number = Math.ceil(Math.random()*1000)
+    test.innerHTML = number
+}
+
+</script>
+
+
+{%endblock content%}

@@ -1,8 +1,9 @@
 from flask import render_template, url_for, flash, redirect,request,Blueprint
 from neuro import app,db,bcrypt
-from neuro.models import User
+from neuro.models import User, Note
 from neuro.Account.forms import DeleteForm, UpdateForm
 from flask_login import login_user, current_user, logout_user,login_required
+from sqlalchemy import text
 
 Account = Blueprint('Account',__name__)
 
@@ -10,8 +11,13 @@ Account = Blueprint('Account',__name__)
 @Account.route("/panel",methods=['GET','POST'])
 @login_required
 def account():
-    
-    return render_template('panel.html')
+    id = current_user.id
+    note = db.engine.execute(text("SELECT id,text FROM note WHERE user_id = :id ORDER BY id DESC LIMIT 1").execution_options(autocommit=True),{'id': current_user.id})
+    for notes in note:
+        print(notes)
+    if len(notes) == 0:
+        return render_template('panel.html')
+    return render_template('panel.html',note=notes[1], note_id=notes[0])
 
 
 

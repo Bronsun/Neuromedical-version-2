@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="section" style="margin:25px; positon:center;background-color:rgb(35, 37, 56); color:black">
+
+<div class="container has-text-centered py-4">
+    <h2 class="title mb-6 has-text-primary">Twoje notatki</h2>
+   
+    <div class="rows is-multiline is-centered">
+      <div class="columns is-multiline is-centered">
+       {%for notes in note %}
+      <div class="column is-4 is-centered">
+      <div class="box" style="background-color: rgb(47, 46, 75);" >
+        <h4 class="title"style="color:white"> {{notes.title}}</h4>
+
+        </div>
+    <p class="text" style="text-align:justify; background:white; padding:20px; border-radius:4px; height:280px;overflow:scroll;" >{{notes.text}} </p>
+    <br>
+    <div class="buttons is-centered">
+    <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/notes/{{notes.id}}"><strong>Edytuj</strong></a>
+    <a class="delete has-background-danger is-large" style="margin-left:20px; margin-bottom:10px;"href="/notes/{{notes.id}}/delete"></a>
+      </div>
+      </div>
+      {%endfor%}
+      </div>
+      <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/notes/add"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
+    </div>
+</div>
+
+</section>
+
+
+{% endblock content %}

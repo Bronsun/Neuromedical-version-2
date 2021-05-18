@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56); color:black ">
+
+<form method="POST" action="">
+                 {{form.hidden_tag()}}
+             <p class="title has-text-primary">Tytuł</p>
+              {{ form.title(class="input", style="border:none; color:black;", placeholder="Tytuł")}}
+           
+              <p class="title has-text-primary"style="margin-top:20px;">Treść</p>
+              {{ form.text(class="input", style="border:none; color:black; height:200px;", placeholder="Tekst")}}
+           {{ form.submit(class="button is-primary",style="margin-top:25px;font-weight:700",type="submit")}}
+</form>
+</section>
+
+
+{% endblock content %}

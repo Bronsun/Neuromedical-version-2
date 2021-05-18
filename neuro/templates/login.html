@@ -1,15 +1,20 @@
 {% extends "main.html" %}
 {% block content %}
+<style>
+::placeholder{
+  color:white !important;
+}
 
-<section class="section" style="border-radius:25px; background-color:rgb(35, 37, 56); margin:25px; ">
-    <div class="box" style="border-radius:25px;">
+</style>
+<section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56); margin:25px; ">
+    <div class="box " style="border-radius:4px;background-color:rgb(35, 37, 56); margin:25px; ">
         
         <div class="field">
-            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3">Zaloguj się</h1>
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Zaloguj się</h1>
             <form method="POST" action="">
                 {{form.hidden_tag()}}
             <p class="control has-icons-left has-icons-right">
-              {{ form.email(class="input",style="border-radius:55px; ", placeholder="Email")}}
+              {{ form.email(class="input", style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
               </span>
@@ -18,7 +23,7 @@
           </div>
           <div class="field">
             <p class="control has-icons-left" >
-                {{ form.password(class="input", style="border-radius:55px;", placeholder="Hasło")}}
+                {{ form.password(class="input", style="border:none;border-bottom:1px solid white;border-radius:0px;background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło")}}
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
@@ -30,8 +35,8 @@
           
           <div class="field">
           <label class="checkbox">
-            {{ form.remember(type="checkbox") }}
-         <strong class="has-text-dark">   {{ form.remember.label() }}</strong>
+            {{ form.remember(type="checkbox", style="border-radius:25px;") }}
+         <strong class="has-text-white">   {{ form.remember.label() }}</strong>
         </label></div>
         <div class="field">
             <a class="has-text-primary-dark is-hoverable" href="/">Zapomniałeś hasła?</a>
@@ -47,6 +52,7 @@
 </div>
   
 </section>
+
 
 
 {% endblock content %}

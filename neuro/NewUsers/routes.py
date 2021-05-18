@@ -21,7 +21,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data) and user.confirmed == True:
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('Main.index'))
+            return redirect(next_page) if next_page else redirect(url_for('Account.account'))
         else:
             error="Nieprawidłowe hasło lub email"
     return render_template('login.html', title='Login', form=form,error=error)
@@ -41,7 +41,7 @@ def register():
     if form.validate_on_submit():
         if request.form.get('agree')!=None:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            user = User(name=form.name.data, email=form.email.data, password=hashed_password, role='user')
+            user = User(name=form.name.data,phone=form.phone.data, email=form.email.data, password=hashed_password, role='user')
             db.session.add(user)
             db.session.commit()
             token = generate_confirmation_token(user.email)          

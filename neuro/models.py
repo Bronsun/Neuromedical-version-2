@@ -45,7 +45,7 @@ class UserDay(db.Model):
 
 class DayText(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(255), unique=False, nullable=True)
+    text = db.Column(db.Text, unique=False, nullable=True)
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
@@ -53,7 +53,7 @@ class DayText(db.Model):
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), unique=False, nullable=False)
-    text = db.Column(db.String(255), unique=False, nullable=True)
+    text = db.Column(db.String(4000), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())

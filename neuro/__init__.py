@@ -37,7 +37,11 @@ from neuro.Account.routes import Account
 from neuro.Main.routes import Main
 from neuro.NewUsers.routes import NewUsers
 from neuro.Tests.routes import Tests
+from neuro.Notes.routes import Notes
+from neuro.Admin.routes import Admin
 
+app.register_blueprint(Admin)
+app.register_blueprint(Notes)
 app.register_blueprint(Tests)
 app.register_blueprint(Account)
 app.register_blueprint(Main)
