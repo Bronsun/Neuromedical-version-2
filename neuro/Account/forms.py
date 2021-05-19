@@ -11,6 +11,7 @@ class DeleteForm(FlaskForm):
 
 class UpdateForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
-    login = StringField('Login', validators=[DataRequired()])
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
-    submit = SubmitField('Save')
+    name = StringField('Imię', validators=[DataRequired()])
+    phone = StringField('Telefon')
+    submit = SubmitField('Zapisz')
+

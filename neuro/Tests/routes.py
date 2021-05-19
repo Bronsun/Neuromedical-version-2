@@ -14,7 +14,7 @@ def tests():
     return render_template('tests.html', day=day)
 @Tests.route("/tests/words",methods=['GET','POST'])
 @login_required
-def wordss():
+def words():
     day = Day.query.all()
     return render_template('words.html', day=day)
 
@@ -34,7 +34,13 @@ def day(day_id):
 
 @Tests.route("/tests/numbers",methods=['GET','POST'])
 @login_required
-def memory():
+def numbers():
     return render_template('numbers.html')
+
+
+@Tests.route("/tests/memory",methods=['GET','POST'])
+@login_required
+def memory():
+    return render_template('memory.html')
 
 

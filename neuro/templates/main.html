@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: rgb(47, 46, 75);" >
+<html style="background-color: transparent" >
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -41,8 +41,15 @@
 }
 
 </style>
-<body id="motion" style="background-color: rgb(47, 46, 75);color:white;">
-   <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
+<body style="background-color: rgb(47, 46, 75);color:white;">
+   
+ 
+
+ {% block content %}
+  <section class="hero" id="motion" style="background: url('/static/photos/marketing/brain.jpeg');background-size: cover;">
+{%endblock content%}
+
+  <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
               <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
@@ -130,16 +137,134 @@
       
 
     </nav>
- 
-
-
-  
-</nav>
- {% block content %}
- 
-
- 
+    {% block content1 %}
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6">
+        <div class="box has-text-white" style="background-color: rgba(255, 255, 255, .15);  
+ backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
+          <h1 class="title is-spaced has-text-primary">The New Internet</h1>
+          <h2 class="subtitle has-text-white">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every smartphone, PC, and smart-fridge near you.</h2>
+          <div class="buttons"><a class="control button is-primary" href="#">Sign up for free</a><a class="control button is-light" href="#">Read more</a></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<section class="section">
+  <div class="container py-4">
+    <div class="columns is-vcentered">
+      <div class="column is-6">
+        <h2 class="title">PiperNet Setup</h2>
+        <h3 class="title is-5">Let's get you connected!</h3>
+        <p class="subtitle is-6">We've designed a simple, efficient process for companies migrating to PiperNet. Here's how it works.</p>
+        <div class="buttons"><a class="button is-primary" href="#">Start Setup!</a><a class="button is-text" href="#">Watch more</a></div>
+      </div>
+       
+      <div class="column is-6">
+      <div class="box" style="background-color: rgba(255, 255, 255, .15);  
+ backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
+        <div class="media">
+          <div class="media-left">
+            <div class="number has-background-primary">1</div>
+          </div>
+         
+          <div class="media-content">
+            <div class="content">
+              <h3>Move Data</h3>
+              <p>Using our Piper Assistant application, you can move your data to be stored our decentralized network with simple drag &amp; drop.</p>
+            </div>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <div class="number has-background-primary">2</div>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <h3>Integrate Software</h3>
+              <p>We want to make sure that you can keep using the software that you use to manage your business.</p>
+            </div>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left">
+            <div class="number has-background-primary">3</div>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <h3>Ongoing Support</h3>
+              <p>As with all innovative technologies, sometimes unpredictable things will happen, and you can always count on our support to solve issues for you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </section>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered py-4">
+    <h2 class="title">The Pipers</h2>
+    <p class="subtitle mb-6">We are the guys that made this whole thing possible</p>
+    <div class="columns is-centered is-multiline py-5">
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Richard Hendricks</h5>
+        <p class="subtitle is-6">CEO</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Jared Dunn</h5>
+        <p class="subtitle is-6">COO</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Monica Hall</h5>
+        <p class="subtitle is-6">CFO</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Erlich Bachman</h5>
+        <p class="subtitle is-6">Marketing Manager</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Bertram Gilfoyle</h5>
+        <p class="subtitle is-6">Chief Systems Architect</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Dinesh Chugtai</h5>
+        <p class="subtitle is-6">Senior Programmer</p>
+      </div>
+      <div class="column is-6 is-3-widescreen mb-6">
+        <div class="level">
+          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
+        </div>
+        <h5 class="title is-5">Nelson Bighetti</h5>
+        <p class="subtitle is-6">Majority Investor</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+ 
 
 <footer class="footer " style="background-color:rgb(35, 37, 56);"><div class="container">
   <div class="columns is-desktop">
@@ -177,7 +302,7 @@
   </div>
   </div>
 </footer>
-   {% endblock %}
+   {% endblock content1 %}
 
 </body>
 
@@ -226,6 +351,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script>
+VANTA.NET({
+  el: "#motion",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  maxHeight: 50.00,
+  minWidth: 50.00,
+  scale: .50,
+  scaleMobile: 1.00,
+  color: 0x5cd483,
+  backgroundColor: 0x2f2e4b
+})
 </script>
 
 </html>
