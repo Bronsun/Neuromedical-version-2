@@ -1,0 +1,291 @@
+{% extends "admin.html" %}
+{% block content %}
+<style>
+   ::placeholder{
+   color:white !important;
+   }
+   .select1{
+   border-radius:10px !important;
+   }
+   .select1:hover{
+   background-color:rgb(108, 102, 251)!important;
+   }
+   .is-active2{
+   background-color:rgb(108, 102, 251)!important;
+   }
+</style>
+<script>
+   // ORIGIN PAGE
+// ===========
+
+// Save Y Offset Position to localStorage
+const recordVerticalOffset = () => {
+
+  localStorage.setItem('pageVerticalPosition', window.scrollY);
+}
+
+// Only save window position after scrolling stops
+const throttleScroll = (delay) => {
+
+  let time = Date.now();
+
+  const checkScroll = setInterval(() => {
+
+    if (Date.now() > (time + delay)) {
+
+      clearInterval(checkScroll);
+      return recordVerticalOffset();
+    }
+  }, 300);
+}
+
+// Scroll Event Listener
+window.addEventListener('scroll', throttleScroll(1000));
+
+
+// DESTINATION PAGE
+// ================
+
+const repositionPage = () => {
+
+  let pageVerticalPosition = localStorage.getItem('pageVerticalPosition') || 0;
+
+  window.scrollTo(0, pageVerticalPosition);
+}
+
+window.addEventListener('load', repositionPage);
+</script>
+<section class="section">
+   <div class="box " style="background-color:rgb(35, 37, 56)">
+      <h2 class="title has-text-white has-text-centered">📝&nbsp; Wyniki</h2>
+   </div>
+   <div class="box" style="background-color:rgb(35, 37, 56)">
+      <div class="container has-text-centered py-4">
+         <div class="rows is-multiline is-centered">
+            <div class="columns is-multiline is-centered">
+               <div class="column is-12 is-centered">
+                  <h2 class="title mb-6 has-text-primary"> Słowa</h2>
+                  <div class="table-wrapper">
+                     <table class="table is-fullwidth" style="overflow-x:scroll;background-color:rgb(35, 37, 56);color:white;border-radius:10px; ">
+                        <thead style="color:white; overflow:scroll;">
+                           <tr >
+                              <th scope="col"style="color:white; ">Dzień</th>
+                              <th scope="col"style="color:white;">Słowa</th>
+                              <th scope="col"style="color:white;">Wynik</th>
+                              <th class="has-text-centered  has-text-white" scope="col">Czas</th>
+                           </tr>
+                        </thead>
+                        <tbody >
+                           {%for days in day.items%}
+                           <tr>
+                              <td>{{days.number}}</td>
+                              <td>{{days.text}}</td>
+                              <td></td>
+                              <td>{{days.created_at}}</td>
+                           </tr>
+                           {%endfor%}
+                        </tbody>
+                     </table>
+                  </div>
+                  <nav style="margin:25px;">
+                     <div class="container">
+                        <div class="pagination" role="navigation" aria-label="pagination">
+                           <div class="lol">
+                              <a  href="{{ url_for('Admin.user',user_id=page_number, words=day.prev_num) }}"
+                                 class="button is-danger
+                                 {% if day.page == 1 %}is-hidden{% endif %}">
+                              &laquo;
+                              </a>
+                              <!-- Loop through the number of pages to display a link for each-->
+                              {% for page_num in day.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                              {% if page_num %}
+                              <!-- Check for the active page and set the link to "Active"-->
+                              {% if day.page == page_num %}
+                              <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Admin.user',user_id=page_number, words=page_num) }}"
+                                 class="button has-text-white is-active">
+                              {{ page_num }}
+                              </a>
+                              {% else %}
+                              <a href="{{ url_for('Admin.user',user_id=page_number, words=page_num) }}"
+                                 class="button">
+                              {{ page_num }}
+                              </a>
+                              {% endif %}
+                              {% else %}
+                              ...
+                              {% endif %}
+                              {% endfor %}
+                              <a href="{{ url_for('Admin.user',user_id=page_number, words=day.next_num) }}"
+                                 class="button is-danger
+                                 {% if day.page == day.pages %}is-hidden{% endif %}
+                                 ">
+                              &raquo;
+                              </a>
+                           </div>
+                        </div>
+                  </nav>
+                  </div>
+                  <div class="column is-12 is-centered">
+                     <h2 class="title mb-6 has-text-primary">Memory</h2>
+                     <div class="table-wrapper">
+                        <table class="table is-fullwidth" style="overflow-x:scroll;background-color:rgb(35, 37, 56);color:white;border-radius:10px; ">
+                           <thead style="color:white; overflow:scroll;">
+                              <tr >
+                                 <th scope="col"style="color:white; ">Próba</th>
+                                 <th scope="col"style="color:white;">Wynik</th>
+                                 <th class="has-text-centered  has-text-white" scope="col">Czas</th>
+                              </tr>
+                           </thead>
+                           <tbody >
+                              <tr>
+                                 <td>1</td>
+                                 <td>
+                                    <a href="/user/r">
+                                       <div class="media">
+                                          <div class="media-content has-text-white"></div>
+                                       </div>
+                                    </a>
+                                 </td>
+                                 <td><a class="has-text-info"></a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="column is-12 is-centered">
+                     <h2 class="title mb-6 has-text-primary">Cyfry</h2>
+                     <div class="table-wrapper">
+                        <table class="table is-fullwidth" style="overflow-x:scroll;background-color:rgb(35, 37, 56);color:white;border-radius:10px; ">
+                           <thead style="color:white; overflow:scroll;">
+                              <tr >
+                                 <th scope="col"style="color:white; ">Próba</th>
+                                 <th scope="col"style="color:white;">Wynik</th>
+                                 <th class="has-text-centered  has-text-white" scope="col">Czas</th>
+                              </tr>
+                           </thead>
+                           <tbody >
+                              <tr>
+                                 <td>1</td>
+                                 <td>
+                                    <a href="/user/r">
+                                       <div class="media">
+                                          <div class="media-content has-text-white"></div>
+                                       </div>
+                                    </a>
+                                 </td>
+                                 <td><a class="has-text-info"href=></a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+</section>
+<section class="section ">
+<div class="columns" style="margin:15px;">
+<div class="column is-8" >
+<div class="container has-text-centered py-4"  style="background-color:rgb(35, 37, 56);padding:15px;">
+<h2 class="title mb-6 has-text-primary">Notatki pacjenta</h2>
+<div class="rows is-multiline is-centered">
+<div class="columns is-multiline is-centered">
+{%for notes in note.items %}
+<div class="column is-4 is-centered" >
+<div class="box" style="background-color: rgb(47, 46, 75);" >
+<h4 class="title"style="color:white"> {{notes.title}}</h4>
+</div>
+
+<p class="text has-text-black" style="text-align:left; background:white; padding:20px; border-radius:4px; height:200px;overflow-y:scroll;" >{{notes.text}} </p>
+
+<br>
+
+</div>
+{%endfor%}
+</div>
+
+</div>
+      <nav style="margin:25px;">
+                     <div class="container">
+                        <div class="pagination" role="navigation" aria-label="pagination">
+                           <div class="lol">
+                              <a  href="{{ url_for('Admin.user',user_id=page_number, notes=note.prev_num) }}"
+                                 class="button is-danger
+                                 {% if note.page == 1 %}is-hidden{% endif %}">
+                              &laquo;
+                              </a>
+                              <!-- Loop through the number of pages to display a link for each-->
+                              {% for page_num in note.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                              {% if page_num %}
+                              <!-- Check for the active page and set the link to "Active"-->
+                              {% if day.page == page_num %}
+                              <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Admin.user',user_id=page_number, notes=page_num) }}"
+                                 class="button has-text-white is-active">
+                              {{ page_num }}
+                              </a>
+                              {% else %}
+                              <a href="{{ url_for('Admin.user',user_id=page_number, notes=page_num) }}"
+                                 class="button">
+                              {{ page_num }}
+                              </a>
+                              {% endif %}
+                              {% else %}
+                              ...
+                              {% endif %}
+                              {% endfor %}
+                              <a href="{{ url_for('Admin.user',user_id=page_number, notes=note.next_num) }}"
+                                 class="button is-danger
+                                 {% if note.page == note.pages %}is-hidden{% endif %}
+                                 ">
+                              &raquo;
+                              </a>
+                           </div>
+                        </div>
+                  </nav>
+</div>
+
+</div>
+
+<div class="column is-4">
+<div class="box " style="background-color:rgb(35, 37, 56)">
+<h2 class="title has-text-white has-text-centered">🧸&nbsp; Dane osobowe</h2>
+</div>
+<div class="box has-text-centered" style="background-color:rgb(35, 37, 56); ">
+<p class="text has-text-primary" style="font-weight:700;">Imię i nazwisko: 
+<p style="color:white; ">{{user.name}}</p>
+<p>
+<p class="text has-text-primary" style="font-weight:700;">Email: 
+<p><a href="mailto:{{user.email}}" >{{user.email}}</a></p>
+<p>
+<p class="text has-text-primary" style="font-weight:700;">Telefon: 
+<p><a href="tel:{{user.phone}}" style="color:white;">{{user.phone}}</a></p>
+<br>
+<div class="buttons is-centered">
+<a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/editUser"><strong>Edytuj</strong></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+   function killMessage() {
+     document.getElementById("message").style.display = "none";
+   }
+   function openMessage(){
+       var x = document.getElementById("message-body");
+     if (x.style.display === "none") {
+       x.style.display = "block";
+     } else {
+       x.style.display = "none";
+     }
+   }
+
+
+</script>
+
+
+{% endblock content %}

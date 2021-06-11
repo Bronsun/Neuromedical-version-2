@@ -1,0 +1,123 @@
+{% extends "admin.html" %}
+{% block content %}
+
+<style>
+::placeholder{
+  color:white !important;
+}
+.select1{
+  border-radius:10px !important;
+}
+.select1:hover{
+  background-color:rgb(108, 102, 251)!important;
+}
+.is-active2{
+  background-color:rgb(108, 102, 251)!important;
+}
+
+
+</style>
+{%if message%}
+<div class="box has-background-primary"><p class="has-text-white">{{message}}</p></div>
+{%endif%}
+<section class="section main-content columns is-fullheight">
+
+<div class="container column is-10">
+    <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56);  ">
+        
+        <div class="field">
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Dodaj admina</h1>
+            <form method="POST" action="">
+                {{form.hidden_tag()}}
+                {% if form.email.errors %}
+            <p class="control has-icons-left has-icons-right has-text-danger">
+              {{ form.email(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              
+            </p>
+            {% for error in form.email.errors %}
+                <span><strong class="has-text-danger">{{ error }}</strong></span>
+              {% endfor %}
+            {% else %}
+            <p class="control has-icons-left has-icons-right">
+                {{ form.email(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+            {% endif %}
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+                {{ form.name(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Imię i nazwisko*")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+                {{ form.phone(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Numer telefonu: +48666777888")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-phone"></i>
+              </span>
+            </p>
+          </div>
+    
+          <div class="field">
+            {% if form.password.errors %}
+            <p class="control has-icons-left">
+                {{ form.password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło*")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+            {% for error in form.password.errors %}
+                <span><strong class="has-text-danger">{{ error }}</strong></span>
+            {% endfor %}
+            {% else %}
+            <p class="control has-icons-left has-icons-right">
+                {{ form.password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło*")}}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+            {% endif %}
+          </div>
+          <div class="field">
+            {% if form.confirm_password.errors %}
+            <p class="control has-icons-left">
+                {{ form.confirm_password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło Raz Jeszcze*")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+            {% for error in form.confirm_password.errors %}
+                <span><strong class="has-text-danger">{{ error }}</strong></span>
+            {% endfor %}
+            {% else %}
+            <p class="control has-icons-left has-icons-right">
+                {{ form.confirm_password(class="input",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Hasło Raz Jeszcze*")}}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+            {% endif %}
+           
+          </label>
+         
+          {%if error%}
+          <p><strong class="has-text-danger">{{ error }}</strong></p>
+          {%endif%}
+          </div>
+          {{ form.submit(class="button is-danger",style="background-color:rgb(108, 102, 251);",type="submit")}}
+          
+        </form>
+        
+</div>
+</div>
+</section>
+
+
+
+
+{% endblock content %}

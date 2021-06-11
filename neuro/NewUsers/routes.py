@@ -27,10 +27,6 @@ def login():
     return render_template('login.html', title='Login', form=form,error=error)
 
 
-
-
-
-
 ###### Register Page ######
 @NewUsers.route("/register", methods=['GET', 'POST'])
 def register():
@@ -41,7 +37,7 @@ def register():
     if form.validate_on_submit():
         if request.form.get('agree')!=None:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            user = User(name=form.name.data,phone=form.phone.data, email=form.email.data, password=hashed_password, role='user')
+            user = User(name=form.name.data,phone=form.phone.data, email=form.email.data, password=hashed_password, role='pacjent')
             db.session.add(user)
             db.session.commit()
             token = generate_confirmation_token(user.email)          
@@ -79,6 +75,7 @@ def confirm_email(token):
         db.session.commit()
         flash('You have confirmed your account. Thanks!', 'success')
     return redirect(url_for('Account.account'))
+    
 ######## LOGOUT ###########
 @NewUsers.route('/logout')
 def logout():

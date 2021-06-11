@@ -1,372 +1,370 @@
 <!DOCTYPE html>
 <html style="background-color: transparent" >
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="Neuromedical, Alzhaimer, Tests">
-    <meta name="description" content="Online testy psychologiczne">
-    <title>Neuromedical | Platforma do testów</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}"media="screen">
-    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}"media="screen">
-    <script defer src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-
-  </head>
-<style>
-.navbar-link:hover{
-  background-color:gray !important;
-}
-.navbar-link{
-  transition:0.5s ease !important;
-}
-.navbarlinks{
-  transition:0.5s ease !important;
-}
-.navbarlinks:hover {
-  background-color:rgb(108, 102, 251) !important;
-  color:white !important;
-}
-.navbarlinkslogout{
-  transition:0.5s ease !important;
-  color: red !important;
-}
-.navbarlinkslogout:hover {
-  background-color:red !important;
-  color:white !important;
-}
-.navbar-dropdown{
-  transition:0.2s ease !important;
-}
-
-</style>
-<body style="background-color: rgb(47, 46, 75);color:white;">
-   
- 
-
- {% block content %}
-  <section class="hero" id="motion" style="background: url('/static/photos/marketing/brain.jpeg');background-size: cover;">
-{%endblock content%}
-
-  <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-              <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
-            </a>
-            <a role="button" class="navbar-burger " style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8">
+      <meta name="keywords" content="Neuromedical, Alzhaimer, Tests">
+      <meta name="description" content="Online testy psychologiczne">
+      <title>Neuromedical | Platforma do testów</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}"media="screen">
+      <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}"media="screen">
+      <script defer src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+   </head>
+   <style>
+      .navbar-link:hover{
+      background-color:gray !important;
+      }
+      .navbar-link{
+      transition:0.5s ease !important;
+      }
+      .navbarlinks{
+      transition:0.5s ease !important;
+      }
+      .navbarlinks:hover {
+      background-color:rgb(108, 102, 251) !important;
+      color:white !important;
+      }
+      .navbarlinkslogout{
+      transition:0.5s ease !important;
+      color: red !important;
+      }
+      .navbarlinkslogout:hover {
+      background-color:red !important;
+      color:white !important;
+      }
+      .navbar-dropdown{
+      transition:0.2s ease !important;
+      }
+   </style>
+   <body style="background-color: rgb(47, 46, 75);color:white;">
+      {% block content %}
+      <section class="hero" id="motion" style="background: url('/static/photos/marketing/brain.jpeg');background-size: cover;">
+         {%endblock content%}
+         <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
+            <div class="navbar-brand">
+               <a class="navbar-item" href="/">
+                  <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
+               </a>
+               <a role="button" class="navbar-burger" style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
+               <span aria-hidden="true"></span>
+               <span aria-hidden="true"></span>
+               <span aria-hidden="true"></span>
+               </a>
             </div>
-            
-            
-        <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
+            <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
             <div class="navbar-start">
-                <div class="navbar-item  is-hoverable">
-                    <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
-                   <i class="fas fa-brain" style="color:white;"></i>&nbsp; Menu</a>
-                    <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
- backdrop-filter: blur(5px);">
-                        <a class="navbar-item has-text-white navbarlinks">
-                          O projekcie
-                        </a>
-                         <a class="navbar-item has-text-white navbarlinks" >
-                          Zgłoś się!
-                        </a>
-                        <a class="navbar-item has-text-white navbarlinks" >
-                          Kontakt
-                        </a>
-                        <hr class="navbar-divider" style="margin:10px;">
-                        <a class="navbar-item has-text-white navbarlinks" >
-                          Zgłoś problem
-                        </a>
-                        <a class="navbar-item has-text-white navbarlinks " >
-                            Regulamin
-                        </a>
-                </div>    
+               <div class="navbar-item  is-hoverable">
+                  <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
+                  <i class="fas fa-brain" style="color:white;"></i>&nbsp; Menu</a>
+                  <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+                     backdrop-filter: blur(5px);">
+                     <a class="navbar-item has-text-white navbarlinks">
+                     O projekcie
+                     </a>
+                     <a class="navbar-item has-text-white navbarlinks" >
+                     Zgłoś się!
+                     </a>
+                     <a class="navbar-item has-text-white navbarlinks" >
+                     Kontakt
+                     </a>
+                     <hr class="navbar-divider" style="margin:10px;">
+                     <a class="navbar-item has-text-white navbarlinks" >
+                     Zgłoś problem
+                     </a>
+                     <a class="navbar-item has-text-white navbarlinks " >
+                     Regulamin
+                     </a>
+                  </div>
+               </div>
             </div>
-        </div>
-        
-
-        <div class="navbar-end">
-          {% if current_user.is_authenticated %}
-                 
-      <div class="navbar-item">
-         <div class="navbar-item  is-hoverable">
-                    <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
-                   <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
-                    <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
- backdrop-filter: blur(5px);">
-                        <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
-                          🎛&nbsp; Panel
-                        </a>
-                         <a class="navbar-item navbarlinks has-text-white"  href="/tests">
-                         📝&nbsp; Testy
-                        </a>
-                        <a class="navbar-item navbarlinks  has-text-white"  href="/notes">
-                         🗓&nbsp; Dzienniczek
-                        </a>
-                   
-                        <hr class="navbar-divider" style="margin:10px;">
-                        <a class="navbar-item navbarlinks  has-text-white" >
-                          Pomoc
-                        </a>
-                        <a class="navbar-item navbarlinkslogout" style="border-radius:4px;" href="/logout">
-                            Wyloguj się
-                        </a>
-                </div>    
-            </div>
-      <div class="navbar-item">
-      <div class="buttons">
-      {% else %}
+            <div class="navbar-end">
+            {% if current_user.is_authenticated %}
             <div class="navbar-item">
-              <div class="buttons">
-                <a class="button has-text-white" style="border-radius:4px; border:none; background-color:rgb(108, 102, 251);" href="/register">
-                  <strong>Zarejestruj się</strong>
-                </a>
-                <a class="button is-primary" style="border-radius:4px;" href="/login">
-                  <strong> Zaloguj się</strong>
-                </a>
-              </div>
+            <div class="navbar-item  is-hoverable">
+               <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
+               <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
+               <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+                  backdrop-filter: blur(5px);">
+                  <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
+                  🎛&nbsp; Panel
+                  </a>
+                  <a class="navbar-item navbarlinks has-text-white"  href="/tests">
+                  📝&nbsp; Testy
+                  </a>
+                  <a class="navbar-item navbarlinks  has-text-white"  href="/notes">
+                  🗓&nbsp; Dzienniczek
+                  </a>
+                  <hr class="navbar-divider" style="margin:10px;">
+                  <a class="navbar-item navbarlinks  has-text-white" >
+                  Pomoc
+                  </a>
+                  <a class="navbar-item navbarlinkslogout" style="border-radius:4px;" href="/logout">
+                  Wyloguj się
+                  </a>
+               </div>
             </div>
-            {% endif %}
-          </div>
-        </div>
+            <div class="navbar-item">
+               <div class="buttons">
+                  {% else %}
+                  <div class="navbar-item">
+                     <div class="buttons">
+                        <a class="button has-text-white" style="border-radius:4px; border:none; background-color:rgb(108, 102, 251);" href="/register">
+                        <strong>Zarejestruj się</strong>
+                        </a>
+                        <a class="button is-primary" style="border-radius:4px;" href="/login">
+                        <strong> Zaloguj się</strong>
+                        </a>
+                     </div>
+                  </div>
+                  {% endif %}
+               </div>
+            </div>
+         </nav>
+         {% block content1 %}
+         <div class="hero-body">
+            <div class="container">
+               <div class="columns">
+                  <div class="column is-6">
+                     <div class="box has-text-white" style="background-color: rgba(255, 255, 255, .15);  
+                        backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
+                        <h1 class="title is-spaced has-text-primary">The New Internet</h1>
+                        <h2 class="subtitle has-text-white">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every smartphone, PC, and smart-fridge near you.</h2>
+                        <div class="buttons"><a class="control button is-primary" href="#">Sign up for free</a><a class="control button is-light" href="#">Read more</a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <section class="section">
+            <div class="container py-4">
+               <div class="columns is-vcentered">
+                  <div class="column is-6">
+                     <h2 class="title">PiperNet Setup</h2>
+                     <h3 class="title is-5">Let's get you connected!</h3>
+                     <p class="subtitle is-6">We've designed a simple, efficient process for companies migrating to PiperNet. Here's how it works.</p>
+                     <div class="buttons"><a class="button is-primary" href="#">Start Setup!</a><a class="button is-text" href="#">Watch more</a></div>
+                  </div>
+                  <div class="column is-6">
+                     <div class="box" style="background-color: rgba(255, 255, 255, .15);  
+                        backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
+                        <div class="media">
+                           <div class="media-left">
+                              <div class="number has-background-primary">1</div>
+                           </div>
+                           <div class="media-content">
+                              <div class="content">
+                                 <h3>Move Data</h3>
+                                 <p>Using our Piper Assistant application, you can move your data to be stored our decentralized network with simple drag &amp; drop.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="media">
+                           <div class="media-left">
+                              <div class="number has-background-primary">2</div>
+                           </div>
+                           <div class="media-content">
+                              <div class="content">
+                                 <h3>Integrate Software</h3>
+                                 <p>We want to make sure that you can keep using the software that you use to manage your business.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="media">
+                           <div class="media-left">
+                              <div class="number has-background-primary">3</div>
+                           </div>
+                           <div class="media-content">
+                              <div class="content">
+                                 <h3>Ongoing Support</h3>
+                                 <p>As with all innovative technologies, sometimes unpredictable things will happen, and you can always count on our support to solve issues for you.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </section>
+      <section class="section">
+         <div class="container has-text-centered py-4">
+            <h2 class="title">The Pipers</h2>
+            <p class="subtitle mb-6">We are the guys that made this whole thing possible</p>
+            <div class="columns is-centered is-multiline py-5">
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Richard Hendricks</h5>
+                  <p class="subtitle is-6">CEO</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Jared Dunn</h5>
+                  <p class="subtitle is-6">COO</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Monica Hall</h5>
+                  <p class="subtitle is-6">CFO</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Erlich Bachman</h5>
+                  <p class="subtitle is-6">Marketing Manager</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Bertram Gilfoyle</h5>
+                  <p class="subtitle is-6">Chief Systems Architect</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Dinesh Chugtai</h5>
+                  <p class="subtitle is-6">Senior Programmer</p>
+               </div>
+               <div class="column is-6 is-3-widescreen mb-6">
+                  <div class="level">
+                     <div class="level-item">
+                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
+                     </div>
+                  </div>
+                  <h5 class="title is-5">Nelson Bighetti</h5>
+                  <p class="subtitle is-6">Majority Investor</p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <footer class="footer " style="background-color:rgb(35, 37, 56);">
+         <div class="container">
+            <div class="columns is-desktop">
+               <div class="column is-5">
+                  <h2 class="title is-5 has-text-primary ">Neuromedical</h2>
+                  <p class="block">Everything we are doing is to help people</p>
+                  <div class="buttons "><a class="button is-black" href="#"><img src="static/photos/marketing/facebook-f.svg" alt=""></a></div>
+               </div>
+               <div class="column">
+                  <h3 class="title is-6 has-text-primary">Products</h3>
+                  <ul>
+                     <li><a href="#" style="color:white;" >Features</a></li>
+                     <li><a href="#"style="color:white;" >Enterprise</a></li>
+                     <li><a href="#" style="color:white;">Support</a></li>
+                     <li><a href="#"style="color:white;" >ICO</a></li>
+                  </ul>
+               </div>
+               <div class="column">
+                  <h6 class="title is-6 has-text-primary">About Pied Piper</h6>
+                  <ul>
+                     <li><a href="#"style="color:white;">Our team</a></li>
+                     <li><a href="#" style="color:white;">Careers</a></li>
+                     <li><a href="#"style="color:white;" >Press</a></li>
+                     <li><a href="#"style="color:white;" >Stores</a></li>
+                  </ul>
+               </div>
+               <div class="column">
+                  <h6 class="title is-6 has-text-primary">Contact</h6>
+                  <ul>
+                     <li><a href="mailto:info@neuromedical.pl" class="has-text-white">info@neuromedical.pl</a></li>
+                     <li><a href="#"class="has-text-white" >+48 510 076 436</a></li>
+                     <li><a href="#" class="has-text-white">Natolin 15, 92-701 Łódź</a></li>
+                  </ul>
+               </div>
+            </div>
+            <hr>
+            <div class="columns">
+               <div class="column"><a href="#" style="color:rgb(108, 102, 251);">Terms and conditions</a></div>
+               <div class="column has-text-right-tablet">
+                  <p class="subtitle is-6">© 2021 Neuromedical. All right reserved. Created by <a href="https://yokan.studio">Yokan Software House</a></p>
+               </div>
+            </div>
+         </div>
+      </footer>
+      {% endblock content1 %}
+   </body>
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
       
-
-    </nav>
-    {% block content1 %}
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-6">
-        <div class="box has-text-white" style="background-color: rgba(255, 255, 255, .15);  
- backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
-          <h1 class="title is-spaced has-text-primary">The New Internet</h1>
-          <h2 class="subtitle has-text-white">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every smartphone, PC, and smart-fridge near you.</h2>
-          <div class="buttons"><a class="control button is-primary" href="#">Sign up for free</a><a class="control button is-light" href="#">Read more</a></div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<section class="section">
-  <div class="container py-4">
-    <div class="columns is-vcentered">
-      <div class="column is-6">
-        <h2 class="title">PiperNet Setup</h2>
-        <h3 class="title is-5">Let's get you connected!</h3>
-        <p class="subtitle is-6">We've designed a simple, efficient process for companies migrating to PiperNet. Here's how it works.</p>
-        <div class="buttons"><a class="button is-primary" href="#">Start Setup!</a><a class="button is-text" href="#">Watch more</a></div>
-      </div>
-       
-      <div class="column is-6">
-      <div class="box" style="background-color: rgba(255, 255, 255, .15);  
- backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
-        <div class="media">
-          <div class="media-left">
-            <div class="number has-background-primary">1</div>
-          </div>
-         
-          <div class="media-content">
-            <div class="content">
-              <h3>Move Data</h3>
-              <p>Using our Piper Assistant application, you can move your data to be stored our decentralized network with simple drag &amp; drop.</p>
-            </div>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-left">
-            <div class="number has-background-primary">2</div>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <h3>Integrate Software</h3>
-              <p>We want to make sure that you can keep using the software that you use to manage your business.</p>
-            </div>
-          </div>
-        </div>
-        <div class="media">
-          <div class="media-left">
-            <div class="number has-background-primary">3</div>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <h3>Ongoing Support</h3>
-              <p>As with all innovative technologies, sometimes unpredictable things will happen, and you can always count on our support to solve issues for you.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
-</section>
-
-<section class="section">
-  <div class="container has-text-centered py-4">
-    <h2 class="title">The Pipers</h2>
-    <p class="subtitle mb-6">We are the guys that made this whole thing possible</p>
-    <div class="columns is-centered is-multiline py-5">
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Richard Hendricks</h5>
-        <p class="subtitle is-6">CEO</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Jared Dunn</h5>
-        <p class="subtitle is-6">COO</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Monica Hall</h5>
-        <p class="subtitle is-6">CFO</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Erlich Bachman</h5>
-        <p class="subtitle is-6">Marketing Manager</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Bertram Gilfoyle</h5>
-        <p class="subtitle is-6">Chief Systems Architect</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Dinesh Chugtai</h5>
-        <p class="subtitle is-6">Senior Programmer</p>
-      </div>
-      <div class="column is-6 is-3-widescreen mb-6">
-        <div class="level">
-          <div class="level-item"><figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure></div>
-        </div>
-        <h5 class="title is-5">Nelson Bighetti</h5>
-        <p class="subtitle is-6">Majority Investor</p>
-      </div>
-    </div>
-  </div>
-</section>
- 
- 
-
-<footer class="footer " style="background-color:rgb(35, 37, 56);"><div class="container">
-  <div class="columns is-desktop">
-    <div class="column is-5">
-      <h2 class="title is-5 has-text-primary ">Neuromedical</h2>
-      <p class="block">Everything we are doing is to help people</p>
-      <div class="buttons "><a class="button is-black" href="#"><img src="static/photos/marketing/facebook-f.svg" alt=""></a></div>
-    </div>
-    <div class="column">
-      <h3 class="title is-6 has-text-primary">Products</h3>
-      <ul><li><a href="#" style="color:white;" >Features</a></li>
-        <li><a href="#"style="color:white;" >Enterprise</a></li>
-        <li><a href="#" style="color:white;">Support</a></li>
-        <li><a href="#"style="color:white;" >ICO</a></li>
-      </ul></div>
-    <div class="column">
-      <h6 class="title is-6 has-text-primary">About Pied Piper</h6>
-      <ul><li><a href="#"style="color:white;">Our team</a></li>
-        <li><a href="#" style="color:white;">Careers</a></li>
-        <li><a href="#"style="color:white;" >Press</a></li>
-        <li><a href="#"style="color:white;" >Stores</a></li>
-      </ul></div>
-    <div class="column">
-      <h6 class="title is-6 has-text-primary">Contact</h6>
-      <ul><li><a href="mailto:info@neuromedical.pl" class="has-text-white">info@neuromedical.pl</a></li>
-        <li><a href="#"class="has-text-white" >+48 510 076 436</a></li>
-        <li><a href="#" class="has-text-white">Natolin 15, 92-701 Łódź</a></li>
-      </ul></div>
-  </div>
-  <hr><div class="columns">
-  <div class="column"><a href="#" style="color:rgb(108, 102, 251);">Terms and conditions</a></div>
-  <div class="column has-text-right-tablet">
-    <p class="subtitle is-6">© 2021 Neuromedical. All right reserved. Created by <a href="https://yokan.studio">Yokan Software House</a></p>
-  </div>
-  </div>
-  </div>
-</footer>
-   {% endblock content1 %}
-
-</body>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-  var $navbarLinks   = Array.prototype.slice.call(document.querySelectorAll('.navbar-link'),0);
-   var $navbarDrop   = Array.prototype.slice.call(document.querySelectorAll('.navbar-dropdown'),0);
-  // Check if there are any nav burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        var $navbarLinks   = Array.prototype.slice.call(document.querySelectorAll('.navbar-link'),0);
+         var $navbarDrop   = Array.prototype.slice.call(document.querySelectorAll('.navbar-dropdown'),0);
+        // Check if there are any nav burgers
+        if ($navbarBurgers.length > 0) {
+      
+          // Add a click event on each of them
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+      
+              // Get the target from the "data-target" attribute
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+      
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+      
+            });
+          });
+      
+          $navbarLinks.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+      
+              // Get the target from the "data-target" attribute
+              
+              var $target = document.getElementByID('navbar1');
+      
+              // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-hidden-mobile');
+      
+            });
+          });
+        }
+      
       });
-    });
-
-    $navbarLinks.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        
-        var $target = document.getElementByID('navbar1');
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-hidden-mobile');
-
-      });
-    });
-  }
-
-});
-
-
-
-
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script>
-VANTA.NET({
-  el: "#motion",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  maxHeight: 50.00,
-  minWidth: 50.00,
-  scale: .50,
-  scaleMobile: 1.00,
-  color: 0x5cd483,
-  backgroundColor: 0x2f2e4b
-})
-</script>
-
+      
+      
+      
+      
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+   <script>
+      VANTA.NET({
+        el: "#motion",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        maxHeight: 50.00,
+        minWidth: 50.00,
+        scale: .50,
+        scaleMobile: 1.00,
+        color: 0x5cd483,
+        backgroundColor: 0x2f2e4b
+      })
+   </script>
 </html>

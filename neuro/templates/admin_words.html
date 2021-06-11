@@ -1,0 +1,35 @@
+{% extends "admin.html" %}
+{% block content %}
+<section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
+
+<div class="field">
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-warning">Słowa: Dzień {{day_id}} </h1>
+            {%for words in word %}
+            <form action="{{ url_for('Admin.editTest',day_id=day_id) }}" method="POST">
+             
+            <p class="control has-icons-left has-icons-right">
+             <input class="input has-text-centered is-uppercase" name={{words.id}} style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;" value={{words.text}} />
+              <span class="icon is-small is-left">
+                {{loop.index}}
+              </span>
+                 <span class="icon is-small is-right">
+                  <a class="delete has-background-danger is-medium" href="/admin/add/words/{{day_id}}/{{words.id}}/delete"></a>
+              </span>
+        
+            </p>
+            {% endfor %}
+
+          </div>
+
+
+
+<div>
+   
+      <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/admin/add/words/{{day_id}}"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
+    </div>
+
+ <input type="submit" value="Zapisz" class="button is-warning" style="margin-top:15px;">
+</form>
+</section>
+
+{% endblock content %}

@@ -13,10 +13,11 @@ Account = Blueprint('Account',__name__)
 def account():
     id = current_user.id
     note = db.engine.execute(text("SELECT id,text FROM note WHERE user_id = :id ORDER BY id DESC LIMIT 1").execution_options(autocommit=True),{'id': current_user.id})
+    notes = []
     for notes in note:
         print(notes)
     if len(notes) == 0:
-        return render_template('panel.html')
+        return render_template('panel.html',note="Brak notatek", note_id=0)
     return render_template('panel.html',note=notes[1], note_id=notes[0])
 
 

@@ -5,7 +5,7 @@
 <div class="box has-text-centered" style="height:40vh;background-color:rgb(35, 37, 56);color:white;">
     <p class="text" id="test"  style="margin-top:100px; font-size:40px; font-weight:500; ">Test</p>
 </div>
-<form class="form" method="POST" action="/tests/{{day.id}}">
+<form class="form" method="POST" action="/tests/words/{{day.id}}">
             {{ form.hidden_tag() }}
         <div class = "submit">
             {{ form.answer (id="form",class="input has-text-centered",style="height:80px; border:none; ",placeholder="Odpowiedź") }}
@@ -26,17 +26,15 @@
 <button class="button is-center is-primary" id="startbtn" onclick="anim();callInterval();"><strong>Rozpocznij test</strong></button>
 <a class="button is-center is-danger" id="backbtn" href="/panel"><strong>Powrót do panelu</strong></a>
 </div>
-
 </div>
-
 </section>
 
 <script>
-var words = ["AGREST","BIGOS","FASOLA","FURIA","BOMBA","KRAWAT","JAROSZ","TRZCINA","CIASTO","KACZKA","CHMURA","SZYSZKA","NARTY","MATA","GŁOWA"]; 
+var words = {{dayTexts|safe}}
 var math_questions=["5%*100=","5+7=","12-3+6=","7-2*3=","0*3="]
 var arr = words.concat(math_questions)
 var i = 0;
-var interval = 3
+var interval = 3000
 var form = document.getElementById('form')
 var submit = document.getElementById('subbtn')
 var test =document.getElementById('test')
@@ -46,9 +44,11 @@ var startbtn = document.getElementById("startbtn")
 form.style.display="none"
 submit.style.display="none"
 
+
+
 function callInterval() {
-    
 // set a variable for setInterval
+console.log(words)
 	var time = setInterval(()=>{
 		test.innerHTML=arr[i];
         if (i > words.length - 1){

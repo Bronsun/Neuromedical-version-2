@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from flask_mail import Mail
 
 
+
 import os
 
 
@@ -46,3 +47,4 @@ app.register_blueprint(Tests)
 app.register_blueprint(Account)
 app.register_blueprint(Main)
 app.register_blueprint(NewUsers)
+

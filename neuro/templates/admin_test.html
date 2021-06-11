@@ -1,0 +1,25 @@
+{% extends "admin.html" %}
+{% block content %}
+<section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
+
+
+  <div class="container has-text-centered py-4">
+    <h2 class="title mb-6 has-text-primary">Wybierz dzień</h2>
+    <div class="rows is-multiline is-centered">
+      <div class="columns is-multiline is-centered">
+       {%for days in day %}
+      <div class="column is-4 is-centered">
+      <a class="box" style="background-color: rgb(47, 46, 75);" href="/admin/test/words/{{days.id}}">
+        <h4 class="title"style="color:rgb(108, 102, 251);"> Dzień  &nbsp;{{days.number}}</h4>
+        </a>
+      </div>
+      {%endfor%}
+      </div>
+    </div>
+     </div>
+      <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/admin/add/day"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
+    </div>
+</div>
+</section>
+
+{% endblock content %}
