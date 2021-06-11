@@ -18,13 +18,17 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data) and user.confirmed == True:
+        if user and bcrypt.check_password_hash(user.password, form.password.data) and user.confirmed == True and user.role=="patient":
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('Account.account'))
+        elif user and bcrypt.check_password_hash(user.password, form.password.data) and user.confirmed == True and user.role=="admin":
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('Admin.admin'))
         else:
             error="Nieprawidłowe hasło lub email"
-    return render_template('login.html', title='Login', form=form,error=error)
+    return render_template('main/login.html', title='Login', form=form,error=error)
 
 
 ###### Register Page ######
@@ -52,11 +56,11 @@ def register():
             return redirect(url_for("NewUsers.verification"))
         else:
             error="You need to accept terms and policies"
-    return render_template('register.html', title='Register', form=form,error=error)
+    return render_template('main/register.html', title='Register', form=form,error=error)
 
 @NewUsers.route("/verification", methods=['GET', 'POST'])
 def verification():
-    return render_template('verification.html',title='Verification')
+    return render_template('main/verification.html',title='Verification')
 
 @NewUsers.route('/confirm/<token>')
 @login_required

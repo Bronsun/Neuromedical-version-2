@@ -1,4 +1,4 @@
-{% extends "admin.html" %}
+{% extends "admin/admin.html" %}
 {% block content %}
 <section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
 
@@ -12,13 +12,14 @@
       <a class="box" style="background-color: rgb(47, 46, 75);" href="/admin/test/words/{{days.id}}">
         <h4 class="title"style="color:rgb(108, 102, 251);"> Dzień  &nbsp;{{days.number}}</h4>
         </a>
+        
       </div>
+       
       {%endfor%}
       </div>
     </div>
-     </div>
-      <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/admin/add/day"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
-    </div>
+   
+
 </div>
 </section>
 

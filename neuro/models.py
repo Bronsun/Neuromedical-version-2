@@ -15,7 +15,7 @@ class User(db.Model,UserMixin):
     phone = db.Column(db.String(255), unique=False, nullable=True)
     email = db.Column(db.String(255),unique=True,nullable=False)
     password = db.Column(db.String(255), nullable=False)
-    role = db.Column(db.String(60),unique=False,nullable=False,server_default='User')
+    role = db.Column(db.String(60),unique=False,nullable=False,server_default='patient')
     confirmed = db.Column(db.Boolean, nullable=False, server_default='False')
     confirmed_on = db.Column(db.DateTime, nullable=True,server_default=db.func.now(), server_onupdate=db.func.now())
     created_at = db.Column(db.DateTime, server_default=db.func.now())

@@ -1,16 +1,47 @@
-{% extends "main.html" %}
-{% block content1 %}
+{% extends "admin/admin.html" %}
+{% block content %}
+
 <style>
 ::placeholder{
   color:white !important;
 }
+.select1{
+  border-radius:10px !important;
+}
+.select1:hover{
+  background-color:rgb(108, 102, 251)!important;
+}
+.is-active2{
+  background-color:rgb(108, 102, 251)!important;
+}
+
 
 </style>
-<section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56); margin:25px;">
-    <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56); margin:25px;  ">
+<div class="columns" style="margin:25px; ">
+   <div class="column" id="message">
+      <div class="box" style="background:transparent;">
+         <article class="message " style="border:none;">
+            <div class="message-header" style="background-color:rgb(35, 37, 56)">
+               <p>Instrukcja</p>
+               <button class="open" aria-label="hide" onclick="openMessage()"></button>
+            </div>
+            <div class="message-body has-text-white"id="message-body" style="background-color:rgb(35, 37, 56)">
+              Podczas dodawania nowego pacjenta, bądź admina nalezy wpisać jego e-mail. Jeśli pacjent nie posiada swojego maila nalezy wpisać następujący email: <strong>imię.nazwisko@neuromedical.pl</strong>. Hasło pacjenta musi się składać od 8 znaków (wszystkie hasła są zabezpieczone, a więc nie mamy do nich podglądu). W celu łatwiejszej organizacji pracy, hasło najlepiej jest tworzyć schematycznie czyli np: <strong>imię.nazwisko lub nazwisko.rokurodzenia itp.</strong>.
+              Aby utworzyć pacjenta, nalezy na samym dole wybrać z listy <strong>Pacjent</strong>. Numer telefonu nie jest wymagany.
+            </div>
+         </article>
+      </div>
+   </div>
+</div>
+<section class="section main-content columns is-fullheight">
+{%if message%}
+<div class="box has-background-primary"><p class="has-text-white">{{message}}</p></div>
+{%endif%}
+<div class="container column is-10">
+    <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56);  ">
         
         <div class="field">
-            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Zarejestruj się</h1>
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Dodaj osobę</h1>
             <form method="POST" action="">
                 {{form.hidden_tag()}}
                 {% if form.email.errors %}
@@ -48,7 +79,7 @@
               </span>
             </p>
           </div>
-    
+          
           <div class="field">
             {% if form.password.errors %}
             <p class="control has-icons-left">
@@ -86,25 +117,38 @@
                   <i class="fas fa-lock"></i>
                 </span>
             {% endif %}
-            <label class="checkbox">
-            <input type="checkbox" name="agree" style="background-color:green;"/>
-            Zapoznałem się z <a href="/terms">regulaminem</a> i <a href="/privacy-policy">polityką prywatności</a>
+           
           </label>
          
           {%if error%}
           <p><strong class="has-text-danger">{{ error }}</strong></p>
           {%endif%}
           </div>
+           <div class="field">
+            {% if form.role.errors %}
+            <p class="control has-icons-left has-icons-right has-text-danger">
+              {{ form.role(class="select",style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
+
+              
+            </p>
+            {% for error in form.role.errors %}
+                <span><strong class="has-text-danger">{{ error }}</strong></span>
+              {% endfor %}
+            {% else %}
+            <p class="control has-icons-left has-icons-right">
+                {{ form.role(class="select",style="outline:none;border:1px solid white;border-radius:4px; margin:10px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
+        
+            {% endif %}
+          </div>
           {{ form.submit(class="button is-danger",style="background-color:rgb(108, 102, 251);",type="submit")}}
           
         </form>
         
+</div>
 </div>
 </section>
 
 
 
 
-{% endblock content1 %}
-{% block content %}
 {% endblock content %}

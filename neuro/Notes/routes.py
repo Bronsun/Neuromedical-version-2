@@ -12,7 +12,7 @@ Notes = Blueprint('Notes',__name__)
 @login_required
 def notes():
     note = Note.query.filter_by(user_id=current_user.id)
-    return render_template("notes.html",note=note)
+    return render_template("panel/notes.html",note=note)
     
 
 @Notes.route("/notes/add",methods=['GET','POST'])
@@ -25,7 +25,7 @@ def addNotes():
         db.session.commit()
         message = "Odpowiedz została wysłana!"
         return redirect(url_for('Notes.notes'))
-    return render_template("add_notes.html",form=form)
+    return render_template("panel/add_notes.html",form=form)
 
 @Notes.route("/notes/<int:note_id>",methods=['GET','POST'])
 @login_required
@@ -42,7 +42,7 @@ def editNotes(note_id):
     form.title.default = notes[0]
     form.text.default = notes[1]
     form.process()
-    return render_template("edit_note.html",note=note, form=form,title=notes[0])
+    return render_template("panel/edit_note.html",note=note, form=form,title=notes[0])
 
 @Notes.route("/notes/<int:note_id>/delete", methods=['GET','POST'])
 @login_required
@@ -52,4 +52,4 @@ def deleteNotes(note_id):
     note2 = Note.query.filter_by(user_id=current_user.id)
     db.session.delete(note1)
     db.session.commit()
-    return render_template("notes.html",note=note2)
+    return render_template("panel/notes.html",note=note2)

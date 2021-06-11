@@ -12,12 +12,13 @@ Tests = Blueprint('Tests',__name__)
 @login_required
 def tests():
     day = Day.query.all()
-    return render_template('tests.html', day=day)
+    return render_template('tests/tests.html', day=day)
+    
 @Tests.route("/tests/words",methods=['GET','POST'])
 @login_required
 def words():
     day = Day.query.all()
-    return render_template('words.html', day=day)
+    return render_template('tests/words.html', day=day)
 
 @Tests.route("/tests/words/<int:day_id>",methods=['GET','POST'])
 @login_required
@@ -32,18 +33,18 @@ def day(day_id):
         db.session.add(answer)
         db.session.commit()
         message = "Odpowiedz została wysłana!"
-    return render_template('day.html', day=day,message=message,form=form,dayTexts=json.dumps(dayTexts,ensure_ascii=False))
+    return render_template('tests/day.html', day=day,message=message,form=form,dayTexts=json.dumps(dayTexts,ensure_ascii=False))
 
 
 @Tests.route("/tests/numbers",methods=['GET','POST'])
 @login_required
 def numbers():
-    return render_template('numbers.html')
+    return render_template('tests/numbers.html')
 
 
 @Tests.route("/tests/memory",methods=['GET','POST'])
 @login_required
 def memory():
-    return render_template('memory.html')
+    return render_template('tests/memory.html')
 
 

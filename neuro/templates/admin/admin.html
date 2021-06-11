@@ -73,9 +73,22 @@
         background:none !important;
         color:rgb(108, 102, 251) !important;
       }
+      ::placeholder { /* Firefox, Chrome, Opera */
+    color: gray !important;
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color: gray !important;
+}
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+     color: gray !important;
+}
+}
    </style>
    <body style="background-color: rgb(47, 46, 75);color:white;padding:10px;">
-      <nav class="navbar" role="navigation" aria-label="main navigation" style="margin:20px; border-radius:10px; background:transparent;border-radius:4px; color:white;background-color:rgb(35, 37, 56);"aria-label="menu" aria-expanded="false" data-target="menu">
+      <nav class="navbar" role="navigation" aria-label="main navigation" style="margin:20px; border-radius:10px; background:transparent;border-radius:4px; color:white;background-color:transparent"aria-label="menu" aria-expanded="false" data-target="menu">
          <div class="navbar-brand">
             <a class="navbar-item" href="/admin">
                <h1 class="text has-text-white"><strong>Neuromedical | Panel Admina </strong></h1>
@@ -88,19 +101,22 @@
          </div>
          <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
             <div class="navbar-start">
-               <a class="navbar-item has-text-white simple" href="/admin">
-               Lista
-               </a>
+    
                <div class="navbar-item  is-hoverable">
                   <a class="navbar-link has-text-white dodaj" style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);" >
                   <i class="fas fa-tools" style="color:white;"></i>&nbsp; Narzędzia</a>
                   <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);backdrop-filter: blur(5px);">
+                     <a class="navbar-item has-text-white navbarlinks" href="/admin">
+               Lista
+               </a>
+               <a class="navbar-item has-text-white navbarlinks" href="/admin/add">
+                     Dodaj osobę
+                     </a>
+               <hr class="navbar-divider" style="margin:10px;">
                      <a class="navbar-item has-text-white navbarlinks" href="/admin/test">
                      Edycja testu
                      </a>
-                     <a class="navbar-item has-text-white navbarlinks" href="/admin/add">
-                     Dodaj admina
-                     </a>
+                 
                   </div>
                </div>
               
@@ -114,12 +130,12 @@
                <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
                   backdrop-filter: blur(5px);">
                   <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/admin/edit">
-                  🎛&nbsp; Twoje dane
+                  👤&nbsp; Twoje dane
                   </a>
-                  <a class="navbar-item navbarlinks  has-text-white"  href="/admin/notification">
-                  🚨&nbsp; Powiadomienia
+                    <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
+                  🎛&nbsp; Panel
                   </a>
-                  <hr class="navbar-divider" style="margin:10px;">
+                   <hr class="navbar-divider" style="margin:10px;">
                    <a class="navbar-item navbarlinks has-text-white " href="/documentation/overview/start/">
                Pomoc
                </a>
@@ -144,7 +160,7 @@
                <div class="columns has-text-centered">
                   <div class="column is-3">
                      <div class="box has-background-primary">
-                        <h3 class="title is-2 has-text-white">448</h3>
+                        <h3 class="title is-2 has-text-white">{{users_number}}</h3>
                         <p class="subtitle has-text-white">Liczba pacjnetów</p>
                      </div>
                   </div>
@@ -157,7 +173,7 @@
                   <div class="column is-3">
                      <div class="box has-background-danger has-text-white">
                         <h3 class="title is-2 has-text-white">208</h3>
-                        <p class="subtitle has-text-white">Uwagi</p>
+                        <p class="subtitle has-text-white">Nowe zgłoszenia</p>
                      </div>
                   </div>
                </div>
@@ -167,10 +183,17 @@
          >
            <div class="columns">
           <div class="column">
-    <input type="text" class="input" placeholder="Szukaj pacjenta" name="search" style="border:none;outline:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white;">
+          <form method="POST" action="">
+     <p class="control has-icons-left has-icons-right has-text-danger">
+    <input type="text" class="input search" placeholder="Szukaj po imieniu" name="search" style="border:none;outline:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white;">
+                 <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+              </span>
+              
+            </p>
           </div>
              <div class="column">
-            <button class="button"  type="submit"><i class="fa fa-search"></i>&nbsp; Szukaj
+            <input class="button" value="Szukaj"  type="submit">
             </button>
               </div>
             </div>
@@ -186,6 +209,7 @@
                            <th scope="col"style="color:white;">Rola</th>
                            <th class="has-text-centered  has-text-white" scope="col">Data dołączenia</th>
                            <th class="has-text-centered has-text-white" scope="col">Zobacz</th>
+                        
                         </tr>
                      </thead>
                      <tbody >
@@ -195,14 +219,15 @@
                            <td>
                               <a href="/admin/user/{{user.id}}">
                                  <div class="media">
-                                    <div class="media-content">{{user.name}}</div>
+                                    <div class="media-content {% if user.role == 'admin' %} has-text-warning {%elif user.role == 'patient' %} has-text-primary {%endif%}">{{user.name}}</div>
                                  </div>
                               </a>
                            </td>
                            <td><a class="has-text-info"href="mailto:{{user.email}}">{{user.email}}</a></td>
-                           <td>{{user.role}}</td>
-                           <td class="has-text-centered has-text-primary">{{user.created_at}}</td>
+                           <td class="has-text-centered  {% if user.role == 'admin'%} has-text-warning {%elif user.role == 'patient' %} has-text-primary {%endif%}">{{user.role}}</td>
+                           <td class="has-text-centered has-text-white">{{user.created_at}}</td>
                            <td class="has-text-centered "><a class="has-text-warning is-hoverable" href="/admin/user/{{user.id}}">🔍</a></td>
+                         
                         </tr>
                         {% endfor %}
                      </tbody>

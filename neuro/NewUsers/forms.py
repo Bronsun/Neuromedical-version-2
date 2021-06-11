@@ -8,7 +8,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Length(min=4,max=60)])
     phone = StringField('Telefon', validators=[Length(min=9)])
     name = StringField('Name', validators=[DataRequired(),Length(max=20)])
-    password = PasswordField('Hasło', validators=[DataRequired(),Length(min=8,max=16,message='Hasło musi mieć przynajmniej: 8 znaków, 1 duza literę i przynajmniej 1 jedną literę')])
+    password = PasswordField('Hasło', validators=[DataRequired(),Length(min=8,max=86,message='Hasło musi mieć przynajmniej: 8 znaków, 1 duza literę i przynajmniej 1 jedną literę')])
     confirm_password = PasswordField('Powtórz hasło', validators=[DataRequired(),EqualTo('password','Hasła się nie zgadzają')])
     submit = SubmitField('Zarejestruj się')
     
