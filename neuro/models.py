@@ -23,6 +23,7 @@ class User(db.Model,UserMixin):
     days = db.relationship('Day', backref='user', lazy=True)
     user_days = db.relationship('UserDay', backref='user', lazy=True)
     notes = db.relationship('Note', backref='user', lazy=True)
+    memory = db.relationship('Memory', backref='user', lazy=True)
     problems = db.relationship('Problem', backref='user', lazy=True)
 
 class Day(db.Model):
@@ -38,6 +39,7 @@ class Day(db.Model):
 class UserDay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(255), unique=False, nullable=True)
+    score = db.Column(db.Integer, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
@@ -49,7 +51,19 @@ class DayText(db.Model):
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
-
+class Math(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, unique=False, nullable=True)
+    day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+class Memory(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    score = db.Column(db.Text, unique=False, nullable=True)
+    time = db.Column(db.Text,unique=False,nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), unique=False, nullable=False)

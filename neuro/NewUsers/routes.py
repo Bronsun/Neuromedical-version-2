@@ -41,7 +41,7 @@ def register():
     if form.validate_on_submit():
         if request.form.get('agree')!=None:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            user = User(name=form.name.data,phone=form.phone.data, email=form.email.data, password=hashed_password, role='pacjent')
+            user = User(name=form.name.data,phone=form.phone.data, email=form.email.data, password=hashed_password, role='patient')
             db.session.add(user)
             db.session.commit()
             token = generate_confirmation_token(user.email)          

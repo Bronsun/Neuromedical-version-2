@@ -1,5 +1,6 @@
 {% extends "main.html" %}
 {% block content %}
+
 <div class="columns" style="margin:25px; ">
    <div class="column" id="message">
       <div class="box" style="background:transparent;">
@@ -15,29 +16,45 @@
       </div>
    </div>
 </div>
+
 <div class="columns" style="margin:25px;">
    <div class="column">
-      <div class="box" style="background-color:rgb(35, 37, 56)">
-         <h2 class="title has-text-white has-text-centered">⏳&nbsp; Statystyki</h2>
+ <div class="box " style="background-color:rgb(35, 37, 56)">
+         <h2 class="title has-text-white has-text-centered">📝&nbsp; Statystyki</h2>
       </div>
-      <div class="box has-text-centered" style="background-color:rgb(35, 37, 56); ">
-         <p class="text has-text-primary" style="font-weight:700;">Ilość przeprowadzonych testów: 
-         <p style="color:white; ">{{current_user.name}}</p>
-         <p>
-         <p class="text has-text-primary" style="font-weight:700;">Średni wynik z testów: 
-         <p style="color:white;">{{current_user.email}}</p>
-         <p>
-         <p class="text has-text-primary" style="font-weight:700;">Wynik z ostatniego testu: 
-         <p style="color:white;">{{current_user.phone}}</p>
-         <p>
-         <p class="text has-text-primary" style="font-weight:700;">Średni czas wykonywania testu: 
-         <p style="color:white;">{{current_user.phone}}</p>
-         <p>
-            <br>
-         <div class="buttons is-centered">
+      <div class="box" style="background-color:rgb(35, 37, 56)">
+         <div class="container has-text-centered py-4">
+            <div class="rows is-multiline is-centered">
+               <div class="columns is-multiline is-centered">
+              
+                  <div class="column is-2 is-centered">
+                  <p class="has-text-primary">Wynik ostatniego testu:</p>
+                  <p class="has-text-white">7 / 15</p>
+                  </div>
+                  <div class="column is-2 is-centered">
+                <p class="has-text-primary">Twój najlepszy wynik:</p>
+                <p class="has-text-white">12 / 15</p>
+                  </div>
+                  <div class="column is-2 is-centered">
+                   <p class="has-text-primary">Poprawa pamięci:</p>
+                   <p style="color:green"> + 24%</p>
+                  </div>
+                   <div class="column is-2 is-centered">
+                   <p class="has-text-primary">Ostatni dzień:</p>
+                    <p class="has-text-white">Dzień 1</p>
+                  </div>
+                
+               </div>
+               <div class="buttons is-centered">
+            <a class="button custom-button test "  href="/statiscis/{{current_user.id}}"><strong>Zobacz więcej</strong></a>
+         </div>
+            </div>
          </div>
       </div>
    </div>
+   </div>
+   </div>
+   <div class="columns" style="margin:25px">
    <div class="column">
       <div class="box " style="background-color:rgb(35, 37, 56)">
          <h2 class="title has-text-white has-text-centered">📝&nbsp; Testy</h2>
@@ -47,7 +64,7 @@
             <div class="rows is-multiline is-centered">
                <div class="columns is-multiline is-centered">
                   <div class="column is-4 is-centered">
-                     <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/words">
+                     <a class="box animate__animated animate__fadeIn test" style="background-color: rgb(47, 46, 75);" href="/tests/words">
                         <h2 class="title mb-6 has-text-primary"> Słowa</h2>
                         <figure class="image is-3by2 is-centered">
                            <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/words.svg">
@@ -55,7 +72,7 @@
                      </a>
                   </div>
                   <div class="column is-4 is-centered">
-                     <a class="box has-text-centered" style="background-color: rgb(47, 46, 75);" href="/tests/memory">
+                     <a class="box animate__animated animate__fadeIn  test" style="background-color: rgb(47, 46, 75);" href="/tests/memory">
                         <h2 class="title mb-6 has-text-primary">Memory</h2>
                         <figure class="image is-3by2 is-centered">
                            <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/memory.svg">
@@ -63,7 +80,7 @@
                      </a>
                   </div>
                   <div class="column is-4 is-centered">
-                     <a class="box" style="background-color: rgb(47, 46, 75);" href="/tests/numbers">
+                     <a class="box animate__animated animate__fadeIn test" style="background-color: rgb(47, 46, 75);" href="/tests/numbers">
                         <h2 class="title mb-6 has-text-primary">Cyfry</h2>
                         <figure class="image is-3by2 is-centered">
                            <img class="is-centered" style="border-radius:4px;" src="/static/photos/marketing/number.svg">
@@ -90,8 +107,8 @@
          </div>
          <br>
          <div class="buttons is-centered">
-            <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/notes/{{note_id}}"><strong>Edytuj</strong></a>
-            <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/notes"><strong>Dodaj</strong></a>
+            <a class="button custom-button test {%if note == "Brak notatek"%}is-hidden {%endif%}" style="border-radius:4px;" href="/notes/{{note_id}}"><strong>Edytuj</strong></a>
+            <a class="button custom-button test"  href="/notes/add"><i class="fas fa-plus" style="color:white;"></i></strong></a>
          </div>
       </div>
    </div>
@@ -110,7 +127,7 @@
          <p style="color:white;">{{current_user.phone}}</p>
          <br>
          <div class="buttons is-centered">
-            <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/edit/{{current_user.id}}"><strong>Edytuj</strong></a>
+            <a class="button custom-button test "  href="/edit"><strong>Edytuj</strong></a>
          </div>
       </div>
    </div>

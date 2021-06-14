@@ -2,15 +2,16 @@
 {% block content %}
 <style>
 ::placeholder{
-  color:white !important;
+  color:gray !important;
 }
 
 </style>
 <section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56); margin:25px;">
-    <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56); margin:25px;  ">
-        
+     <div class="columns" style="margin:25px;">
+
+     <div class="column">
         <div class="field">
-            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Zarejestruj się</h1>
+            <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3" style="color:rgb(108, 102, 251)">Zarejestruj się</h1>
             <form method="POST" action="">
                 {{form.hidden_tag()}}
                 {% if form.email.errors %}
@@ -87,19 +88,29 @@
                 </span>
             {% endif %}
             <label class="checkbox">
-            <input type="checkbox" name="agree" style="background-color:green;"/>
-            Zapoznałem się z <a href="/terms">regulaminem</a> i <a href="/privacy-policy">polityką prywatności</a>
+             <p>Zapoznałem się z <a href="/terms">regulaminem</a> i <a href="/privacy-policy">polityką prywatności</a></p>
+            <input type="checkbox" style="border-radius:25px;" name="agree" style="background-color:green;"/>
+           
           </label>
          
           {%if error%}
           <p><strong class="has-text-danger">{{ error }}</strong></p>
           {%endif%}
           </div>
-          {{ form.submit(class="button is-danger",style="background-color:rgb(108, 102, 251);",type="submit")}}
+          {{ form.submit(class="button test is-danger",style="background-color:rgb(108, 102, 251);",type="submit")}}
           
         </form>
-        
-</div>
+          </div>  <!---->
+        <div class="column is-hidden-mobile">
+   
+          <div class="box animate__animated animate__fadeIn  test" style="background:transparent;" >
+                     
+                        <figure class="image is-3by2 is-centered">
+                           <img class="is-centered" style="border-radius:4px;background-color:rgb(35, 37, 56);" src="/static/photos/marketing/register.svg">
+                        </figure>
+                     </div>
+        </div>
+    
 </section>
 
 

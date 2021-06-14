@@ -6,12 +6,13 @@ from flask_login import login_user, current_user, logout_user,login_required
 from sqlalchemy import text
 
 Notes = Blueprint('Notes',__name__)
-
+ROWS_PER_PAGE=3
 ####### Main Notes page #######
 @Notes.route("/notes",methods=['GET','POST'])
 @login_required
 def notes():
-    note = Note.query.filter_by(user_id=current_user.id)
+    page = request.args.get('page',1,type=int)
+    note = Note.query.filter(Note.user_id==current_user.id).order_by(Note.updated_at.desc()).paginate(page=page,per_page=ROWS_PER_PAGE)
     return render_template("panel/notes.html",note=note)
     
 
@@ -46,10 +47,8 @@ def editNotes(note_id):
 
 @Notes.route("/notes/<int:note_id>/delete", methods=['GET','POST'])
 @login_required
-def deleteNotes(note_id):
-    note = Note.query.get_or_404(note_id)
-    note1 = Note.query.filter_by(id=note_id).first()
-    note2 = Note.query.filter_by(user_id=current_user.id)
-    db.session.delete(note1)
+def deleteNotes(note_id):    
+    note = Note.query.filter_by(user_id=current_user.id).first()
+    db.session.delete(note)
     db.session.commit()
-    return render_template("panel/notes.html",note=note2)
+    return redirect(url_for('Notes.notes'))

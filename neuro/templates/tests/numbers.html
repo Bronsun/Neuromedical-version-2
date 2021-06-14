@@ -4,7 +4,7 @@
 <section class="section has-text-centered">
 
 <div class="box" style="border:none;outline:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white; text-align:center">
-<p class="text" id="test">⬇ Test pamięci krótkiej. Na ułamek sekundy zostanie wyświetlona cyfra z przedziału od 0 - 100000. Twoim zadaniem jest wpisanie jej w ponizszy formularz. Aby rozpocząć kliknij start ⬇</p>
+<p class="text" id="test">Test pamięci krótkiej. Zostanie wyświetlona cyfra z przedziału od 0 - 100000. Twoim zadaniem jest wpisanie jej w ponizszy formularz po odpowiedzeniu serii pytań. Aby rozpocząć kliknij start</p>
 </div>
 <div class="box" style="border:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white;">
 <p>Liczba to: </p>
@@ -17,7 +17,7 @@
 var test = document.getElementById('test')
 
 function startTest(){
-    var number = Math.ceil(Math.random()*1000)
+    var number = Math.ceil(Math.random()*100000)
     test.innerHTML = number
 }
 

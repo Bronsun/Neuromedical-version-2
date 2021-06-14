@@ -11,6 +11,11 @@
       <script defer src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+       <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+   
    </head>
    <style>
       @media screen and (max-width: 1068px) {
@@ -85,6 +90,29 @@
 ::-ms-input-placeholder { /* Microsoft Edge */
      color: gray !important;
 }
+      .test:hover{
+   transform:translateY(-3px);
+}
+.test{
+transition:0.5s ease !important;
+}
+.custom-button{
+   background:transparent;
+   color:white;
+}
+.custom-button:hover{
+   border:1px solid #3273dc;
+   color:white;
+}
+.custom-button-active{
+    border:1px solid #3273dc;
+    color:white;
+    background:none;
+}
+.more:hover{
+   color:#3273dc !important;
+}
+
 }
    </style>
    <body style="background-color: rgb(47, 46, 75);color:white;padding:10px;">
@@ -106,15 +134,15 @@
                   <a class="navbar-link has-text-white dodaj" style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);" >
                   <i class="fas fa-tools" style="color:white;"></i>&nbsp; Narzędzia</a>
                   <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);backdrop-filter: blur(5px);">
-                     <a class="navbar-item has-text-white navbarlinks" href="/admin">
-               Lista
+                     <a class="navbar-item has-text-white navbarlinks test" href="/admin">
+              <i class="fas fa-users" style="color:white;"></i>&nbsp; Pacjenci
                </a>
-               <a class="navbar-item has-text-white navbarlinks" href="/admin/add">
-                     Dodaj osobę
+               <a class="navbar-item has-text-white navbarlinks test" href="/admin/add">
+                    <i class="fas fa-plus" style="color:white;"></i>&nbsp; Dodaj osobę
                      </a>
                <hr class="navbar-divider" style="margin:10px;">
-                     <a class="navbar-item has-text-white navbarlinks" href="/admin/test">
-                     Edycja testu
+                     <a class="navbar-item has-text-white navbarlinks test" href="/admin/test">
+                     <i class="fas fa-pen" style="color:white;"></i>&nbsp;  Edycja testu
                      </a>
                  
                   </div>
@@ -129,17 +157,17 @@
                <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
                <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
                   backdrop-filter: blur(5px);">
-                  <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/admin/edit">
+                  <a class="navbar-item navbarlinks has-text-white test" style="border:none;"  href="/edit">
                   👤&nbsp; Twoje dane
                   </a>
-                    <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
+                    <a class="navbar-item navbarlinks has-text-white test" style="border:none;"  href="/panel">
                   🎛&nbsp; Panel
                   </a>
                    <hr class="navbar-divider" style="margin:10px;">
-                   <a class="navbar-item navbarlinks has-text-white " href="/documentation/overview/start/">
+                   <a class="navbar-item navbarlinks has-text-white test " href="/documentation/overview/start/">
                Pomoc
                </a>
-                  <a class="navbar-item navbarlinkslogout" style="border-radius:4px;" href="/logout">
+                  <a class="navbar-item navbarlinkslogout test" style="border-radius:4px;" href="/logout">
                   Wyloguj się
                   </a>
                </div>
@@ -193,7 +221,7 @@
             </p>
           </div>
              <div class="column">
-            <input class="button" value="Szukaj"  type="submit">
+            <input class="button test custom-button" value="Szukaj"  type="submit">
             </button>
               </div>
             </div>
@@ -219,14 +247,14 @@
                            <td>
                               <a href="/admin/user/{{user.id}}">
                                  <div class="media">
-                                    <div class="media-content {% if user.role == 'admin' %} has-text-warning {%elif user.role == 'patient' %} has-text-primary {%endif%}">{{user.name}}</div>
+                                    <div class="media-content test{% if user.role == 'admin' %} has-text-warning {%elif user.role == 'patient' %} has-text-primary {%endif%}">{{user.name}}</div>
                                  </div>
                               </a>
                            </td>
-                           <td><a class="has-text-info"href="mailto:{{user.email}}">{{user.email}}</a></td>
+                           <td><a class="has-text-info test"href="mailto:{{user.email}}">{{user.email}}</a></td>
                            <td class="has-text-centered  {% if user.role == 'admin'%} has-text-warning {%elif user.role == 'patient' %} has-text-primary {%endif%}">{{user.role}}</td>
                            <td class="has-text-centered has-text-white">{{user.created_at}}</td>
-                           <td class="has-text-centered "><a class="has-text-warning is-hoverable" href="/admin/user/{{user.id}}">🔍</a></td>
+                           <td class="has-text-centered more"><a class="more" href="/admin/user/{{user.id}}"> <i class="fas fa-ellipsis-h more test" style="color:white;"></i></a></td>
                          
                         </tr>
                         {% endfor %}
@@ -240,7 +268,7 @@
             <div class="pagination" role="navigation" aria-label="pagination">
                <div class="lol">
                   <a  href="{{ url_for('Admin.admin', page=users.prev_num) }}"
-                     class="button is-danger
+                     class="custom-button test button
                      {% if users.page == 1 %}is-hidden{% endif %}">
                   &laquo;
                   </a>
@@ -249,13 +277,13 @@
                   {% if page_num %}
                   <!-- Check for the active page and set the link to "Active"-->
                   {% if users.page == page_num %}
-                  <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Admin.admin', page=page_num) }}"
-                     class="button has-text-white is-active">
+                  <a class="custom-button-active is-transparent button"href="{{ url_for('Admin.admin', page=page_num) }}"
+                     class="custom-button-active ">
                   {{ page_num }}
                   </a>
                   {% else %}
                   <a href="{{ url_for('Admin.admin', page=page_num) }}"
-                     class="button">
+                     class="custom-button test button">
                   {{ page_num }}
                   </a>
                   {% endif %}
@@ -264,7 +292,7 @@
                   {% endif %}
                   {% endfor %}
                   <a href="{{ url_for('Admin.admin', page=users.next_num) }}"
-                     class="button is-danger
+                     class="custom-button test button
                      {% if users.page == users.pages %}disabled{% endif %}">
                   &raquo;
                   </a>

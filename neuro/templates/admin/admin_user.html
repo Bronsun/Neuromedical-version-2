@@ -73,6 +73,7 @@ window.addEventListener('load', repositionPage);
                               <th scope="col"style="color:white;">Słowa</th>
                               <th scope="col"style="color:white;">Wynik</th>
                               <th class="has-text-centered  has-text-white" scope="col">Czas</th>
+                              <th class="has-text-centered has-text-white">Usuń</th>
                            </tr>
                         </thead>
                         <tbody >
@@ -80,8 +81,11 @@ window.addEventListener('load', repositionPage);
                            <tr>
                               <td>{{days.number}}</td>
                               <td>{{days.text}}</td>
-                              <td></td>
+                              <td>{{days.score}}/{{count_words}}</td>
                               <td>{{days.created_at}}</td>
+                              <td> 
+                              <a class="delete has-background-danger is-medium test" href="/admin/answer/{{days.id}}/delete"></a>
+                               </td>
                            </tr>
                            {%endfor%}
                         </tbody>
@@ -92,7 +96,7 @@ window.addEventListener('load', repositionPage);
                         <div class="pagination" role="navigation" aria-label="pagination">
                            <div class="lol">
                               <a  href="{{ url_for('Admin.user',user_id=page_number, words=day.prev_num) }}"
-                                 class="button is-danger
+                                 class="button custom-button test
                                  {% if day.page == 1 %}is-hidden{% endif %}">
                               &laquo;
                               </a>
@@ -101,13 +105,13 @@ window.addEventListener('load', repositionPage);
                               {% if page_num %}
                               <!-- Check for the active page and set the link to "Active"-->
                               {% if day.page == page_num %}
-                              <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Admin.user',user_id=page_number, words=page_num) }}"
-                                 class="button has-text-white is-active">
+                              <a href="{{ url_for('Admin.user',user_id=page_number, words=page_num) }}"
+                                 class="button custom-button-active">
                               {{ page_num }}
                               </a>
                               {% else %}
                               <a href="{{ url_for('Admin.user',user_id=page_number, words=page_num) }}"
-                                 class="button">
+                                 class="button custom-button test">
                               {{ page_num }}
                               </a>
                               {% endif %}
@@ -116,7 +120,7 @@ window.addEventListener('load', repositionPage);
                               {% endif %}
                               {% endfor %}
                               <a href="{{ url_for('Admin.user',user_id=page_number, words=day.next_num) }}"
-                                 class="button is-danger
+                                 class="button custom-button test
                                  {% if day.page == day.pages %}is-hidden{% endif %}
                                  ">
                               &raquo;
@@ -212,7 +216,7 @@ window.addEventListener('load', repositionPage);
                         <div class="pagination" role="navigation" aria-label="pagination">
                            <div class="lol">
                               <a  href="{{ url_for('Admin.user',user_id=page_number, notes=note.prev_num) }}"
-                                 class="button is-danger
+                                 class="button custom-button test
                                  {% if note.page == 1 %}is-hidden{% endif %}">
                               &laquo;
                               </a>
@@ -222,12 +226,12 @@ window.addEventListener('load', repositionPage);
                               <!-- Check for the active page and set the link to "Active"-->
                               {% if day.page == page_num %}
                               <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Admin.user',user_id=page_number, notes=page_num) }}"
-                                 class="button has-text-white is-active">
+                                 class="button custom-button-active">
                               {{ page_num }}
                               </a>
                               {% else %}
                               <a href="{{ url_for('Admin.user',user_id=page_number, notes=page_num) }}"
-                                 class="button">
+                                 class="button custom-button test">
                               {{ page_num }}
                               </a>
                               {% endif %}
@@ -236,7 +240,7 @@ window.addEventListener('load', repositionPage);
                               {% endif %}
                               {% endfor %}
                               <a href="{{ url_for('Admin.user',user_id=page_number, notes=note.next_num) }}"
-                                 class="button is-danger
+                                 class="button custom-button test
                                  {% if note.page == note.pages %}is-hidden{% endif %}
                                  ">
                               &raquo;
@@ -263,7 +267,7 @@ window.addEventListener('load', repositionPage);
 <p><a href="tel:{{user.phone}}" style="color:white;">{{user.phone}}</a></p>
 <br>
 <div class="buttons is-centered">
-<a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/edit/{{user.id}}"><strong>Edytuj</strong></a>
+<a class="button custom-button test"  href="/edit"><strong>Edytuj</strong></a>
 </div>
 </div>
 </div>

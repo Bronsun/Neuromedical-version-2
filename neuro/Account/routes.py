@@ -11,23 +11,22 @@ Account = Blueprint('Account',__name__)
 @Account.route("/panel",methods=['GET','POST'])
 @login_required
 def account():
-    id = current_user.id
     note = db.engine.execute(text("SELECT id,text FROM note WHERE user_id = :id ORDER BY id DESC LIMIT 1").execution_options(autocommit=True),{'id': current_user.id})
-    user = User.query.filter_by(id = id).first()
+    user = User.query.filter_by(id = current_user.id).first()
     notes = []
     for notes in note:
-        print(notes)
+        lol ="xd"
     if len(notes) == 0:
-        return render_template('panel.html',note="Brak notatek", note_id=0)
+        return render_template('panel/panel.html',note="Brak notatek", note_id=0)
     return render_template('panel/panel.html',note=notes[1], note_id=notes[0],user=user)
 
 
 
-@Account.route("/edit/<int:user_id>",methods=['GET','POST'])
+@Account.route("/edit",methods=['GET','POST'])
 @login_required
-def editUser(user_id):
+def editUser():
     form = UpdateForm()
-    user = User.query.filter_by(id=user_id)
+    user = User.query.filter_by(id=current_user.id).first()
     message = None
     if request.method == "POST":
         if form.validate_on_submit:

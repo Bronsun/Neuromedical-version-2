@@ -1,5 +1,22 @@
 {% extends "main.html" %}
 {% block content %}
+<style>
+.custom-button{
+   background:transparent;
+   color:white;
+}
+.custom-button:hover{
+   border:1px solid #3273dc;
+   color:white;
+}
+.custom-button-active{
+    border:1px solid #3273dc;
+    color:white;
+    background:none;
+}
+
+
+</style>
 <section class="section" style="margin:25px; positon:center;background-color:rgb(35, 37, 56); color:black">
 
 <div class="container has-text-centered py-4">
@@ -7,23 +24,61 @@
    
     <div class="rows is-multiline is-centered">
       <div class="columns is-multiline is-centered">
-       {%for notes in note %}
+       {%for notes in note.items %}
       <div class="column is-4 is-centered">
-      <div class="box" style="background-color: rgb(47, 46, 75);" >
+      <div class="box " style="background-color: rgb(47, 46, 75);" >
         <h4 class="title"style="color:white"> {{notes.title}}</h4>
 
         </div>
-    <p class="text" style="text-align:justify; background:white; padding:20px; border-radius:4px; height:280px;overflow:scroll;" >{{notes.text}} </p>
+    <p class="text " style="text-align:justify; background:white; padding:20px; border-radius:4px; height:280px;overflow:scroll;" >{{notes.text}} </p>
     <br>
     <div class="buttons is-centered">
-    <a class="button" style="border-radius:4px; border:none; color:white; background-color:rgb(108, 102, 251);" href="/notes/{{notes.id}}"><strong>Edytuj</strong></a>
+    <a class="button custom-button test" style="border-radius:4px;" href="/notes/{{notes.id}}"><strong>Edytuj</strong></a>
     <a class="delete has-background-danger is-large" style="margin-left:20px; margin-bottom:10px;"href="/notes/{{notes.id}}/delete"></a>
       </div>
       </div>
       {%endfor%}
       </div>
-      <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/notes/add"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
+      <a class="button custom-button test" style="border-radius:4px;" href="/notes/add"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
     </div>
+</div>
+    <nav style="margin:25px;">
+                     <div class="container">
+                        <div class="pagination" role="navigation" aria-label="pagination">
+                          <div class="lol">
+                              <a  href="{{ url_for('Notes.notes',page=note.prev_num) }}"
+                                 class="button custom-button test
+                                 {% if note.page == 1 %}is-hidden{% endif %}">
+                              &laquo;
+                              </a>
+                              <!-- Loop through the number of pages to display a link for each-->
+                              {% for page_num in note.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                              {% if page_num %}
+                              <!-- Check for the active page and set the link to "Active"-->
+                              {% if note.page == page_num %}
+                              <a style="background-color:rgb(108, 102, 251)"href="{{ url_for('Notes.notes', page=page_num) }}"
+                                 class="button custom-button-active">
+                              {{ page_num }}
+                              </a>
+                              {% else %}
+                              <a href="{{ url_for('Notes.notes', page=page_num) }}"
+                                 class="button custom-button test">
+                              {{ page_num }}
+                              </a>
+                              {% endif %}
+                              {% else %}
+                              ...
+                              {% endif %}
+                              {% endfor %}
+                              <a href="{{ url_for('Notes.notes', page=note.next_num) }}"
+                                 class="button custom-button test
+                                 {% if note.page == note.pages %}is-hidden{% endif %}
+                                 ">
+                              &raquo;
+                              </a>
+                         
+                        </div>
+                  </nav>
 </div>
 
 </section>

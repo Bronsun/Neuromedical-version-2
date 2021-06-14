@@ -3,7 +3,7 @@
 
 <style>
 ::placeholder{
-  color:white !important;
+  color:gray !important;
 }
 .select1{
   border-radius:10px !important;
@@ -17,7 +17,11 @@
 
 
 </style>
+{%if message%}
+<div class="box has-background-primary" style="margin:25px;"><p class="has-text-white">{{message}}</p></div>
+{%endif%}
 <div class="columns" style="margin:25px; ">
+
    <div class="column" id="message">
       <div class="box" style="background:transparent;">
          <article class="message " style="border:none;">
@@ -33,10 +37,9 @@
       </div>
    </div>
 </div>
+
 <section class="section main-content columns is-fullheight">
-{%if message%}
-<div class="box has-background-primary"><p class="has-text-white">{{message}}</p></div>
-{%endif%}
+
 <div class="container column is-10">
     <div class="box"style="border-radius:4px;background-color:rgb(35, 37, 56);  ">
         
@@ -136,11 +139,11 @@
               {% endfor %}
             {% else %}
             <p class="control has-icons-left has-icons-right">
-                {{ form.role(class="select",style="outline:none;border:1px solid white;border-radius:4px; margin:10px; background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
+                {{ form.role(class="select custom-button test",style="outline:none; margin:10px; border-radius:4px;background-color:rgb(35, 37, 56); color:white;", placeholder="Email*")}}
         
             {% endif %}
           </div>
-          {{ form.submit(class="button is-danger",style="background-color:rgb(108, 102, 251);",type="submit")}}
+          {{ form.submit(class="button custom-button test",type="submit")}}
           
         </form>
         

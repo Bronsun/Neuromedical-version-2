@@ -3,13 +3,13 @@
 
 <style>
 ::placeholder{
-  color:white !important;
+  color:gray !important;
 }
 
 </style>
-<section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56); margin:25px; ">
-    <div class="box " style="border-radius:4px;background-color:rgb(35, 37, 56); margin:25px; ">
-        
+<section class="section" style="border-radius:4px; background-color:rgb(35, 37, 56);; margin:25px; ">
+    <div class="columns" style="margin:25px;">
+        <div class="column">
         <div class="field">
             <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-primary">Zaloguj się</h1>
             <form method="POST" action="">
@@ -42,15 +42,24 @@
         <div class="field">
             <a class="has-text-primary-dark is-hoverable" href="/">Zapomniałeś hasła?</a>
         </div>
-        {{ form.submit(class="button is-primary",type="submit")}}
+        {{ form.submit(class="button test is-primary",type="submit")}}
         </form>
 
     
 
-        
+       </div> 
         <!---->
-        
-</div>
+        <div class="column is-hidden-mobile">
+   
+          <div class="box animate__animated animate__fadeIn  test" style="background:transparent;" >
+                     
+                        <figure class="image is-3by2 is-centered">
+                           <img class="is-centered" style="border-radius:4px;background-color:rgb(35, 37, 56);" src="/static/photos/marketing/login.svg">
+                        </figure>
+                     </div>
+        </div>
+        </div>
+
   
 </section>
 

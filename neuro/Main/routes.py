@@ -18,3 +18,7 @@ def index():
 @Main.errorhandler(404)
 def page_not_found(e):
     return render_template('main/404.html'), 404
+
+@Main.route('/404')
+def error():
+    return render_template('main/404.html')

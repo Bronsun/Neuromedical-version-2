@@ -1,32 +1,134 @@
 {% extends "admin/admin.html" %}
 {% block content %}
+<style>
+
+.chart {
+    background: rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: relative;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 100%;
+}
+    .chart span {
+        /* You can modify the value below to change the distance between the percentage number and the bar */
+        margin-left: 5px;
+        color: #fff;
+        font-weight: bolder;
+    }
+
+.bar {
+    /* You can modify the total time used for the animation here */
+    animation: load 8s normal forwards;
+    /* 
+    Add a little spice by having a shadow below the bar.
+    Feel free to comment out this line below to have an even LITE version :D 
+    */
+    box-shadow: 0 10px 40px -10px rgb(108, 102, 251);
+
+    border-radius: 100px;
+    background: rgb(108, 102, 251);
+    height: 30px;
+    width: 0;
+} 
+@keyframes load {
+    0% {
+        width: 0;
+    }
+    100% {
+        /* You need to change the percentage below to match the value in the corresponding <span> */
+        width: 100%;
+    }
+}
+
+
+</style>
 <section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
    {%if message%}
-   <div class="box has-background-primary">
-      <p class="has-text-white">{{message}}</p>
+   <div class="box has-background-primary animate__animated animate__bounce" >
+      <p class="has-text-white" >{{message}}</p>
    </div>
+   {%else%}
+    <div class="is-transparent " id="chart" style="display:none;">
+  <div  class="chart " >
+    <div class="bar "></div>
+    <!-- Change the value below -->
+    <span id="value1">100%</span>
+</div>
+    </div>
+     </div>
    {%endif%}
+       <div class="is-transparent " id="chart" style="display:none;">
+  <div  class="chart " >
+    <div class="bar "></div>
+    <!-- Change the value below -->
+    <span id="value1">100%</span>
+</div>
+    </div>
+     </div>
    <div class="field">
       <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-warning">Słowa: Dzień {{day_id}} </h1>
       {%for words in word %}
       <form action="{{ url_for('Admin.editTest',day_id=day_id) }}" method="POST">
          <p class="control has-icons-left has-icons-right">
-            <input class="input has-text-centered is-uppercase" name={{words.id}} style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;" value={{words.text}} />
+            <input class="input has-text-centered is-uppercase {%if words.text == "Edytuj słowo" %} has-text-warning{%endif%}" name={{words.id}} style="border:none;outline:none;border-bottom:1px solid white;{%if words.text == "Edytuj słowo" %} border-bottom:1px solid orange{%endif%};border-radius:0px; background-color:rgb(35, 37, 56); color:white;" value={{words.text}} />
             <span class="icon is-small is-left">
             {{loop.index}}
             </span>
             <span class="icon is-small is-right">
-            <a class="delete has-background-danger is-medium" href="/admin/add/words/{{day_id}}/{{words.id}}/delete"></a>
+            <a class="delete has-background-danger is-medium test" href="/admin/add/words/{{day_id}}/{{words.id}}/delete"></a>
             </span>
          </p>
          {% endfor %}
+        
+ </div>
+     <div>
+   <a class="button custom-button test"  href="/admin/add/words/{{day_id}}"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
    </div>
+    <div class="field">
+      <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-warning">Zadania matemtyczne </h1>
+      {%for maths in math %}
+      <form action="{{ url_for('Admin.editTest',day_id=day_id) }}" method="POST">
+         <p class="control has-icons-left has-icons-right">
+            <input class="input has-text-centered is-uppercase {%if maths.text == "Edytuj zadanie" %} has-text-warning{%endif%}" name={{maths.id}} style="border:none;outline:none;border-bottom:1px solid white;{%if maths.text == "Edytuj zadanie" %} border-bottom:1px solid orange{%endif%};border-radius:0px; background-color:rgb(35, 37, 56); color:white;" value={{maths.text}} />
+            <span class="icon is-small is-left">
+            {{loop.index}}
+            </span>
+            <span class="icon is-small is-right">
+            <a class="delete has-background-danger is-medium test" href="/admin/add/maths/{{day_id}}/{{maths.id}}/delete"></a>
+            </span>
+         </p>
+         {% endfor %}
+ </div>
    <div>
-   <a class="button is-primary" style="border-radius:4px; border:none; color:white;" href="/admin/add/words/{{day_id}}"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
+   <a class="button custom-button test" href="/admin/add/maths/{{day_id}}"><strong>  <i class="fas fa-plus" style="color:white;"></i></strong></a>
    </div>
-   <input type="submit" value="Zapisz" class="button is-warning" style="margin-top:15px;">
+   <input type="submit" onclick="increase()"  value="Zapisz" class="button custom-button test" style="margin-top:15px; border:1px solid orange">
    </form>
   
 </section>
+<script>
+// Github verson (1 file .html): https://github.com/Soooda/progress_bar_lite/blob/master/index.html
 
+function increase() {
+    // Change the variable to modify the speed of the number increasing from 0 to (ms)
+    let SPEED = 70;
+    // Retrieve the percentage value
+    chart = document.getElementById("chart")
+    chart.style.display="block"
+    let limit = parseInt(document.getElementById("value1").innerHTML, 10);
+
+    for(let i = 0; i <= limit; i++) {
+        setTimeout(function () {
+            document.getElementById("value1").innerHTML = i + "%";
+        }, SPEED * i);
+    }
+
+}
+
+
+</script>
 {% endblock content %}

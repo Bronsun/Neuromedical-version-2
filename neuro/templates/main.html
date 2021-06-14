@@ -11,6 +11,10 @@
       <script defer src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
    </head>
    <style>
       .navbar-link:hover{
@@ -37,6 +41,114 @@
       .navbar-dropdown{
       transition:0.2s ease !important;
       }
+      .animate__animated.animate__backInRight{
+         --animate-duration: 0.7s;
+      }
+      .test:hover{
+   transform:translateY(-3px);
+}
+.test{
+transition:0.5s ease !important;
+}
+.custom-button{
+   background:transparent;
+   color:white;
+   border-radius:4px;
+}
+.custom-button:hover{
+   border:1px solid #3273dc;
+   
+   color:white;
+}
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+        opacity: 0.6;
+    }
+}
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+   // background-image: linear-gradient(to top, rgb(108, 102, 251) 20%,#27273c  80%);
+     background-color: #27273c);
+}
+.bgTop {
+    z-index: 15;
+    opacity: 0.6;
+}
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.75;
+}
+.bgBottom {
+    z-index: 5;
+    
+}
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+    color:green;
+    
+}
+.waveTop {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+   -webkit-animation: move-wave 3s;
+   -webkit-animation-delay: 1s;
+   animation-delay: 1s;
+}
+.waveMiddle {
+    background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+    background-size: 50% 100px;
+    
+}
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+    
+}
+
+}
+.main-div{
+   transform:translateY(170%) !important;
+}
+.animate__animated.animate__fadeInDown{
+   --animate-duration: 800ms;
+   --animate-delay: 10.9s;
+}
+
+
+      
+    
    </style>
    <body style="background-color: rgb(47, 46, 75);color:white;">
          <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" style="border-radius:4px; margin:20px; background-color:transparent; color:white;">
@@ -44,33 +156,33 @@
                <a class="navbar-item" href="/">
                   <h1 style="font-size:25px; color:white;"><strong>Neuromedical</strong></h1>
                </a>
-               <a role="button" class="navbar-burger" style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
+               <a role="button" class="navbar-burger " style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
                <span aria-hidden="true"></span>
                <span aria-hidden="true"></span>
                <span aria-hidden="true"></span>
                </a>
             </div>
-            <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
+            <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent; z-index:99999999999999">
             <div class="navbar-start">
-               <div class="navbar-item  is-hoverable">
+               <div class="navbar-item  is-hoverable ">
                   <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
                   <i class="fas fa-brain" style="color:white;"></i>&nbsp; Menu</a>
-                  <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+                  <div class="navbar-dropdown animate__animated animate__fadeIn" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
                      backdrop-filter: blur(5px);">
-                     <a class="navbar-item has-text-white navbarlinks">
+                     <a class="navbar-item has-text-white navbarlinks test">
                      O projekcie
                      </a>
-                     <a class="navbar-item has-text-white navbarlinks" >
+                     <a class="navbar-item has-text-white navbarlinks test" >
                      Zgłoś się!
                      </a>
-                     <a class="navbar-item has-text-white navbarlinks" >
+                     <a class="navbar-item has-text-white navbarlinks test" >
                      Kontakt
                      </a>
                      <hr class="navbar-divider" style="margin:10px;">
-                     <a class="navbar-item has-text-white navbarlinks" >
+                     <a class="navbar-item has-text-white navbarlinks test" >
                      Zgłoś problem
                      </a>
-                     <a class="navbar-item has-text-white navbarlinks " >
+                     <a class="navbar-item has-text-white navbarlinks test " >
                      Regulamin
                      </a>
                   </div>
@@ -84,22 +196,22 @@
             <div class="navbar-item  is-hoverable">
                <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
                <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
-               <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
+               <div class="navbar-dropdown animate__animated animate__fadeIn" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
                   backdrop-filter: blur(5px);">
-                  <a class="navbar-item navbarlinks has-text-white" style="border:none;"  href="/panel">
+                  <a class="navbar-item navbarlinks has-text-white test" style="border:none;"  href="/panel">
                   🎛&nbsp; Panel
                   </a>
-                  <a class="navbar-item navbarlinks has-text-white"  href="/tests">
+                  <a class="navbar-item navbarlinks has-text-white test"  href="/tests">
                   📝&nbsp; Testy
                   </a>
-                  <a class="navbar-item navbarlinks  has-text-white"  href="/notes">
+                  <a class="navbar-item navbarlinks  has-text-white test"  href="/notes">
                   🗓&nbsp; Dzienniczek
                   </a>
                   <hr class="navbar-divider" style="margin:10px;">
-                  <a class="navbar-item navbarlinks  has-text-white" >
+                  <a class="navbar-item navbarlinks  has-text-white test" >
                   Pomoc
                   </a>
-                  <a class="navbar-item navbarlinkslogout" style="border-radius:4px;" href="/logout">
+                  <a class="navbar-item navbarlinkslogout test" style="border-radius:4px;" href="/logout">
                   Wyloguj się
                   </a>
                    
@@ -110,10 +222,10 @@
                   {% else %}
                   <div class="navbar-item">
                      <div class="buttons">
-                        <a class="button has-text-white" style="border-radius:4px; border:none; background-color:rgb(108, 102, 251);" href="/register">
+                        <a class="button test" style="border-radius:4px;border:none;color:white;background-color:rgb(108, 102, 251) " href="/register">
                         <strong>Zarejestruj się</strong>
                         </a>
-                        <a class="button is-primary" style="border-radius:4px;" href="/login">
+                        <a class="button custom-button is-primary test" style="border-radius:4px;" href="/login">
                         <strong> Zaloguj się</strong>
                         </a>
                      </div>
@@ -123,186 +235,41 @@
             </div>
          </nav>
          {% block content %}
-         <div class="hero-body">
-            <div class="container">
-               <div class="columns">
-                  <div class="column is-6">
-                     <div class="box has-text-white" style="background-color: rgba(255, 255, 255, .15);  
-                        backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
-                        <h1 class="title is-spaced has-text-primary">The New Internet</h1>
-                        <h2 class="subtitle has-text-white">Decentralized, secure, private. The PiperNet is on it's way to revolutionize every smartphone, PC, and smart-fridge near you.</h2>
-                        <div class="buttons"><a class="control button is-primary" href="#">Sign up for free</a><a class="control button is-light" href="#">Read more</a></div>
+     <section class="section is-hidden-mobile"></section>
+      
+      
+        <section class="section "></section>
+            <div id="content"class="container has-text-centered is-align-content-center" style="z-index:22; opacity:1; ">
+               <div class="columns is-vcentered is-centered is-align-content-center "style="z-index:22; opacity:1;" >
+                  <div class="column is-6"  style="z-index:22; opacity:1;">
+                  
+                        <h1 class="title is-spaced has-text-primary animate__animated animate__fadeInDown" >Rewolucja.</h1>
+                        <h2 class="subtitle has-text-white animate__animated animate__fadeInDown" >Stworzyliśmy pierwsze na świecie urządzenie do leczenia choroby Alzhaimera. </h2>
+                        <div class="buttons is-centered"><a class="control custom-button test button " style="z-index:22; opacity:1;" href="#">Dołącz do nas!</a><a class=" test button is-primary" style="font-weight:700;" href="#">Poznaj nas!</a></div>
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
-         <section class="section">
-            <div class="container py-4">
-               <div class="columns is-vcentered">
-                  <div class="column is-6">
-                     <h2 class="title">PiperNet Setup</h2>
-                     <h3 class="title is-5">Let's get you connected!</h3>
-                     <p class="subtitle is-6">We've designed a simple, efficient process for companies migrating to PiperNet. Here's how it works.</p>
-                     <div class="buttons"><a class="button is-primary" href="#">Start Setup!</a><a class="button is-text" href="#">Watch more</a></div>
-                  </div>
-                  <div class="column is-6">
-                     <div class="box" style="background-color: rgba(255, 255, 255, .15);  
-                        backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(15px);">
-                        <div class="media">
-                           <div class="media-left">
-                              <div class="number has-background-primary">1</div>
-                           </div>
-                           <div class="media-content">
-                              <div class="content">
-                                 <h3>Move Data</h3>
-                                 <p>Using our Piper Assistant application, you can move your data to be stored our decentralized network with simple drag &amp; drop.</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="media">
-                           <div class="media-left">
-                              <div class="number has-background-primary">2</div>
-                           </div>
-                           <div class="media-content">
-                              <div class="content">
-                                 <h3>Integrate Software</h3>
-                                 <p>We want to make sure that you can keep using the software that you use to manage your business.</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="media">
-                           <div class="media-left">
-                              <div class="number has-background-primary">3</div>
-                           </div>
-                           <div class="media-content">
-                              <div class="content">
-                                 <h3>Ongoing Support</h3>
-                                 <p>As with all innovative technologies, sometimes unpredictable things will happen, and you can always count on our support to solve issues for you.</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
+         
+
+   <section class="main-content has-text-centered">   
+<div class="waveWrapper waveAnimation">
+
+  <div class="waveWrapperInner bgTop has-text-centered" style="z-index:11;" >
+    <div class="wave waveTop has-text-centered" style="background-image: url('static/photos/marketing/wave-top.png');z-index:1;"></div>
+    
+  </div>
+  <div class="waveWrapperInner bgMiddle">
+    <div class="wave waveMiddle" style="background-image: url('static/photos/marketing/wave-mid.png')">
+   
+  </div>
+  <div class="waveWrapperInner bgBottom">
+    <div class="wave waveBottom" style="background-image: url('static/photos/marketing/wave-bot.png')"></div>
+  </div>
+</div>
+
+
       </section>
-      <section class="section">
-         <div class="container has-text-centered py-4">
-            <h2 class="title">The Pipers</h2>
-            <p class="subtitle mb-6">We are the guys that made this whole thing possible</p>
-            <div class="columns is-centered is-multiline py-5">
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Richard Hendricks</h5>
-                  <p class="subtitle is-6">CEO</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Jared Dunn</h5>
-                  <p class="subtitle is-6">COO</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Monica Hall</h5>
-                  <p class="subtitle is-6">CFO</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Erlich Bachman</h5>
-                  <p class="subtitle is-6">Marketing Manager</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Bertram Gilfoyle</h5>
-                  <p class="subtitle is-6">Chief Systems Architect</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Dinesh Chugtai</h5>
-                  <p class="subtitle is-6">Senior Programmer</p>
-               </div>
-               <div class="column is-6 is-3-widescreen mb-6">
-                  <div class="level">
-                     <div class="level-item">
-                        <figure class="image is-128x128"><img class="is-rounded" src="placeholder/pictures/bg_circle.svg?primary=00d1b2" alt=""></figure>
-                     </div>
-                  </div>
-                  <h5 class="title is-5">Nelson Bighetti</h5>
-                  <p class="subtitle is-6">Majority Investor</p>
-               </div>
-            </div>
-         </div>
-      </section>
-      <footer class="footer " style="background-color:rgb(35, 37, 56);">
-         <div class="container">
-            <div class="columns is-desktop">
-               <div class="column is-5">
-                  <h2 class="title is-5 has-text-primary ">Neuromedical</h2>
-                  <p class="block">Everything we are doing is to help people</p>
-                  <div class="buttons "><a class="button is-black" href="#"><img src="static/photos/marketing/facebook-f.svg" alt=""></a></div>
-               </div>
-               <div class="column">
-                  <h3 class="title is-6 has-text-primary">Products</h3>
-                  <ul>
-                     <li><a href="#" style="color:white;" >Features</a></li>
-                     <li><a href="#"style="color:white;" >Enterprise</a></li>
-                     <li><a href="#" style="color:white;">Support</a></li>
-                     <li><a href="#"style="color:white;" >ICO</a></li>
-                  </ul>
-               </div>
-               <div class="column">
-                  <h6 class="title is-6 has-text-primary">About Pied Piper</h6>
-                  <ul>
-                     <li><a href="#"style="color:white;">Our team</a></li>
-                     <li><a href="#" style="color:white;">Careers</a></li>
-                     <li><a href="#"style="color:white;" >Press</a></li>
-                     <li><a href="#"style="color:white;" >Stores</a></li>
-                  </ul>
-               </div>
-               <div class="column">
-                  <h6 class="title is-6 has-text-primary">Contact</h6>
-                  <ul>
-                     <li><a href="mailto:info@neuromedical.pl" class="has-text-white">info@neuromedical.pl</a></li>
-                     <li><a href="#"class="has-text-white" >+48 510 076 436</a></li>
-                     <li><a href="#" class="has-text-white">Natolin 15, 92-701 Łódź</a></li>
-                  </ul>
-               </div>
-            </div>
-            <hr>
-            <div class="columns">
-               <div class="column"><a href="#" style="color:rgb(108, 102, 251);">Terms and conditions</a></div>
-               <div class="column has-text-right-tablet">
-                  <p class="subtitle is-6">© 2021 Neuromedical. All right reserved. Created by <a href="https://yokan.studio">Yokan Software House</a></p>
-               </div>
-            </div>
-         </div>
-      </footer>
+   
       {% endblock content %}
    </body>
    <script>
@@ -310,25 +277,30 @@
       
         // Get all "navbar-burger" elements
         var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        var $content = Array.prototype.slice.call(document.querySelectorAll('.content'), 0);
         var $navbarLinks   = Array.prototype.slice.call(document.querySelectorAll('.navbar-link'),0);
          var $navbarDrop   = Array.prototype.slice.call(document.querySelectorAll('.navbar-dropdown'),0);
+         
         // Check if there are any nav burgers
         if ($navbarBurgers.length > 0) {
-      
+           
           // Add a click event on each of them
           $navbarBurgers.forEach(function ($el) {
             $el.addEventListener('click', function () {
-      
+               
               // Get the target from the "data-target" attribute
               var target = $el.dataset.target;
               var $target = document.getElementById(target);
-      
+              
               // Toggle the class on both the "navbar-burger" and the "navbar-menu"
               $el.classList.toggle('is-active');
               $target.classList.toggle('is-active');
-      
+             $content.style.display="none"
+         
             });
+            
           });
+          
       
           $navbarLinks.forEach(function ($el) {
             $el.addEventListener('click', function () {
@@ -339,10 +311,13 @@
       
               // Toggle the class on both the "navbar-burger" and the "navbar-menu"
               $el.classList.toggle('is-active');
+              
               $target.classList.toggle('is-hidden-mobile');
+              
       
             });
           });
+           
         }
       
       });
@@ -367,4 +342,5 @@
         backgroundColor: 0x2f2e4b
       })
    </script>
+   <script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script><script>window.addEventListener("load",function(){window.wpcc.init({"border":"thin","corners":"small","colors":{"popup":{"background":"#e2f7d4","text":"#000000","border":"#7fc25e"},"button":{"background":"#7fc25e","text":"#ffffff"}},"position":"bottom-right","content":{"href":"https://neuromedical.pl/policy","message":"Używamy ciasteczek do analizowania ruchu na stronie, aby lepiej zoptymalizować działanie serwisu.","link":"Dowiedz się więcej","button":"Akceptuje"}})});</script>
 </html>
