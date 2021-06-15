@@ -48,7 +48,7 @@ def editNotes(note_id):
 @Notes.route("/notes/<int:note_id>/delete", methods=['GET','POST'])
 @login_required
 def deleteNotes(note_id):    
-    note = Note.query.filter_by(user_id=current_user.id).first()
+    note = Note.query.filter_by(id=note_id).first()
     db.session.delete(note)
     db.session.commit()
     return redirect(url_for('Notes.notes'))

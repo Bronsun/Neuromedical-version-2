@@ -10206,3 +10206,130 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin-bottom: 0;
   padding: 0.375rem 1rem;
 }
+.navbar-link:hover{
+  background-color:gray !important;
+  }
+  .navbar-link{
+  transition:0.5s ease !important;
+  }
+  .navbarlinks{
+  transition:0.5s ease !important;
+  }
+  .navbarlinks:hover {
+  background-color:rgb(108, 102, 251) !important;
+  color:white !important;
+  }
+  .navbarlinkslogout{
+  transition:0.5s ease !important;
+  color: red !important;
+  }
+  .navbarlinkslogout:hover {
+  background-color:red !important;
+  color:white !important;
+  }
+  .navbar-dropdown{
+  transition:0.2s ease !important;
+  }
+  .animate__animated.animate__backInRight{
+     --animate-duration: 0.7s;
+  }
+  .test:hover{
+transform:translateY(-3px);
+}
+.test{
+transition:0.5s ease !important;
+}
+.custom-button{
+background:transparent;
+color:white;
+border-radius:4px;
+}
+.custom-button:hover{
+border:1px solid #3273dc;
+
+color:white;
+}
+@keyframes move_wave {
+0% {
+    transform: translateX(0) translateZ(0) scaleY(1)
+}
+50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55)
+}
+100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1)
+}
+}
+.waveWrapper {
+overflow: hidden;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+top: 0;
+margin: auto;
+}
+.waveWrapperInner {
+position: absolute;
+width: 100%;
+overflow: hidden;
+height: 100%;
+bottom: -1px;
+background-image: linear-gradi;ent(to top, rgb(108, 102, 251) 20%,#27273c  80%);
+ background-color: #27273c;
+}
+.bgTop {
+z-index: 15;
+opacity: 0.6;
+}
+.bgMiddle {
+z-index: 10;
+opacity: 0.75;
+}
+.bgBottom {
+z-index: 5;
+
+}
+.wave {
+position: absolute;
+left: 0;
+width: 200%;
+height: 100%;
+background-repeat: repeat no-repeat;
+background-position: 0 bottom;
+transform-origin: center bottom;
+color:green;
+
+}
+.waveTop {
+background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+animation: move-wave 3s;
+-webkit-animation: move-wave 3s;
+-webkit-animation-delay: 1s;
+animation-delay: 1s;
+}
+.waveMiddle {
+background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+background-size: 50% 100px;
+
+}
+.waveAnimation .waveBottom {
+animation: move_wave 15s linear infinite;
+
+}
+
+
+.main-div{
+transform:translateY(170%) !important;
+}
+.animate__animated.animate__fadeInDown{
+--animate-duration: 800ms;
+--animate-delay: 10.9s;
+}

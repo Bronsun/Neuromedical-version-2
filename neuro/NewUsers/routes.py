@@ -46,8 +46,8 @@ def register():
             db.session.commit()
             token = generate_confirmation_token(user.email)          
             confirm_url = url_for('NewUsers.confirm_email', token=token, _external=True)
-            html = render_template('email.html', confirm_url=confirm_url)
-            subject = "Please confirm your email"
+            html = render_template('main/email.html', confirm_url=confirm_url)
+            subject = "🚨 Zweryfikuj swoje konto | Neuromedical.pl"
             send_email(user.email, subject, html)
 
             login_user(user)
@@ -55,7 +55,7 @@ def register():
             flash('A confirmation email has been sent via email.', 'success')
             return redirect(url_for("NewUsers.verification"))
         else:
-            error="You need to accept terms and policies"
+            error="Musisz zaakcpetować politykę prywatności i regulamin"
     return render_template('main/register.html', title='Register', form=form,error=error)
 
 @NewUsers.route("/verification", methods=['GET', 'POST'])

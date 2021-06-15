@@ -17,12 +17,12 @@ app.config['SECRET_KEY']='adsadsd3123kjhg32131iplksa'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://db100055789:Hotspring123@mysql-madexzpc.ogicom.pl:5432/db100055789'
 app.config['SECURITY_PASSWORD_SALT'] = 'adsadsd3123kjhg32131iplksassasww221211e132d'
 
-app.config['MAIL_SERVER'] ='smtp.googlemail.com'
+app.config['MAIL_SERVER'] ='smtp-madexzpc.ogicom.pl'
 app.config['MAIL_PORT']= 587
 app.config['MAIL_USE_TLS']= True
-app.config['MAIL_USERNAME'] = 'mateusz.broncel2015@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Grota1234567890000'
-app.config['MAIL_DEFAULT_SENDER'] = 'mateusz.broncel2015@gmail.com'
+app.config['MAIL_USERNAME'] = 'info.neuromedical.madexzpc'
+app.config['MAIL_PASSWORD'] = 'NeuroMateusz12!'
+app.config['MAIL_DEFAULT_SENDER'] = 'info@neuromedical.pl'
 
 
 
