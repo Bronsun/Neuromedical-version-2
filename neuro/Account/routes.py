@@ -1,8 +1,9 @@
 from flask import render_template, url_for, flash, redirect,request,Blueprint
 from neuro import app,db,bcrypt
-from neuro.models import User, Note
+from neuro.models import User, Note, UserDay, Day
 from neuro.Account.forms import DeleteForm, UpdateForm
 from flask_login import login_user, current_user, logout_user,login_required
+from sqlalchemy import func
 from sqlalchemy import text
 
 Account = Blueprint('Account',__name__)
@@ -13,12 +14,16 @@ Account = Blueprint('Account',__name__)
 def account():
     note = db.engine.execute(text("SELECT id,text FROM note WHERE user_id = :id ORDER BY id DESC LIMIT 1").execution_options(autocommit=True),{'id': current_user.id})
     user = User.query.filter_by(id = current_user.id).first()
+    statistic = UserDay.query.join(Day, UserDay.day_id == UserDay.day_id).add_columns(Day.number,UserDay.total,Day.id,UserDay.text,UserDay.id,UserDay.score,UserDay.user_id,UserDay.created_at).filter(UserDay.user_id==user.id).order_by(UserDay.created_at.desc()).first()
+    best_score = db.session.query(func.max(UserDay.score)).scalar()
+    bestScore = UserDay.query.filter(UserDay.score==best_score and UserDay.user_id==current_user.id).first()
+  
     notes = []
     for notes in note:
         lol ="xd"
     if len(notes) == 0:
-        return render_template('panel/panel.html',note="Brak notatek", note_id=0)
-    return render_template('panel/panel.html',note=notes[1], note_id=notes[0],user=user)
+        return render_template('panel/panel.html',note="Brak notatek", note_id=0,user=user,statistic=statistic,bestScore=bestScore)
+    return render_template('panel/panel.html',note=notes[1], note_id=notes[0],user=user,statistic=statistic,bestScore=bestScore)
 
 
 

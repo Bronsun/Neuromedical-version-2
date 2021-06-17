@@ -32,6 +32,7 @@ def day(day_id):
     mathSql = db.engine.execute(text("SELECT text FROM math WHERE day_id = :id ").execution_options(autocommit=True),{'id': day_id})
     maths = [list(row) for row in mathSql]
     correct = DayText.query.filter_by(day_id=day_id).all()
+    total = DayText.query.filter_by(day_id=day_id).count()
     correct_words =[]
     for corrects in correct:
         correct_words.append(corrects.text)
@@ -42,8 +43,8 @@ def day(day_id):
         a = set(words)
         b = set(correct_words)
         score = len(a&b)
-        
-        answer = UserDay(text=data, score=score, user_id=current_user.id, day_id=day_id)
+       
+        answer = UserDay(text=data, score=score,total=total, user_id=current_user.id, day_id=day_id)
         db.session.add(answer)
         db.session.commit()
         message = "Odpowiedź została wysłana!"

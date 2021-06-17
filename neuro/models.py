@@ -40,6 +40,7 @@ class UserDay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(255), unique=False, nullable=True)
     score = db.Column(db.Integer, nullable=True)
+    total = db.Column(db.Integer, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())

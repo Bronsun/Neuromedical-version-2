@@ -1,4 +1,5 @@
 {% extends "admin/admin.html" %}
+{% set active_page = "edit" %}
 {% block content %}
 <style>
 
@@ -46,29 +47,15 @@
 
 
 </style>
+
+<div class="column">
 <section class="section has-text-centered" style="margin:25px; positon:center;background-color:rgb(35, 37, 56)">
-   {%if message%}
-   <div class="box has-background-primary animate__animated animate__bounce" >
-      <p class="has-text-white" >{{message}}</p>
-   </div>
-   {%else%}
-    <div class="is-transparent " id="chart" style="display:none;">
-  <div  class="chart " >
-    <div class="bar "></div>
-    <!-- Change the value below -->
-    <span id="value1">100%</span>
-</div>
-    </div>
-     </div>
-   {%endif%}
-       <div class="is-transparent " id="chart" style="display:none;">
-  <div  class="chart " >
-    <div class="bar "></div>
-    <!-- Change the value below -->
-    <span id="value1">100%</span>
-</div>
-    </div>
-     </div>
+     {% if message %}
+     <div class='box has-background-primary' style="margin:25px;">
+        <p class=" has-text-centered ">{{ message }}</p>
+        </div>
+        {% endif %} 
+
    <div class="field">
       <h1 class="has-text-centered-mobile is-uppercase has-text-weight-bold is-size-3 has-text-warning">Słowa: Dzień {{day_id}} </h1>
       {%for words in word %}
@@ -110,6 +97,7 @@
    </form>
   
 </section>
+ </div>
 <script>
 // Github verson (1 file .html): https://github.com/Soooda/progress_bar_lite/blob/master/index.html
 

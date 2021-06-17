@@ -23,31 +23,30 @@
          <h2 class="title has-text-white has-text-centered">📝&nbsp; Statystyki</h2>
       </div>
       <div class="box" style="background-color:rgb(35, 37, 56)">
+         {%if statistic.score == Null%}
+              <p class="has-text-centered has-text-white">Tutaj pojawią się statystyki związne z testem "SŁOWA". Wypełnij test, aby zobaczyć pierwsze rezultaty</p>
+              {%endif%}
          <div class="container has-text-centered py-4">
+         
             <div class="rows is-multiline is-centered">
+             
                <div class="columns is-multiline is-centered">
-              
+          
                   <div class="column is-2 is-centered">
-                  <p class="has-text-primary">Wynik ostatniego testu:</p>
-                  <p class="has-text-white">7 / 15</p>
+                  <p class="{%if statistic.score == Null%}  {%else%}has-text-primary{%endif%}">Wynik ostatniego testu:</p>
+                  <p class="has-text-white {%if statistic.score == Null%} is-hidden {%else%}has-text-white{%endif%}">{{statistic.score}} / {{statistic.total}}</p>
                   </div>
                   <div class="column is-2 is-centered">
-                <p class="has-text-primary">Twój najlepszy wynik:</p>
-                <p class="has-text-white">12 / 15</p>
+                <p class="{%if statistic.score == Null%}  {%else%}has-text-primary{%endif%}">Twój najlepszy wynik:</p>
+                <p class="has-text-white {%if statistic.score == Null%} is-hidden {%else%}has-text-white{%endif%}">{{bestScore.score}} / {{bestScore.total}}</p>
                   </div>
-                  <div class="column is-2 is-centered">
-                   <p class="has-text-primary">Poprawa pamięci:</p>
-                   <p style="color:green"> + 24%</p>
-                  </div>
+               
                    <div class="column is-2 is-centered">
-                   <p class="has-text-primary">Ostatni dzień:</p>
-                    <p class="has-text-white">Dzień 1</p>
+                   <p class="{%if statistic.score == Null%}  {%else%}has-text-primary{%endif%}">Ostatni dzień:</p>
+                    <p class="has-text-white {%if statistic.score == Null%} is-hidden {%else%}has-text-white{%endif%}">Dzień {{statistic.number}}</p>
                   </div>
                 
                </div>
-               <div class="buttons is-centered">
-            <a class="button custom-button test "  href="/statiscis/{{current_user.id}}"><strong>Zobacz więcej</strong></a>
-         </div>
             </div>
          </div>
       </div>

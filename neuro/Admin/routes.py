@@ -6,7 +6,7 @@ from flask_login import login_user, current_user, logout_user,login_required
 from sqlalchemy import text
 from flaskext.mysql import pymysql
 from functools import wraps
-
+from sqlalchemy.sql import func
 Admin = Blueprint('Admin',__name__)
 
 ROWS_PER_PAGE=25
@@ -29,11 +29,13 @@ def admin():
     users_number = User.query.filter_by(role="patient").count()
     page = request.args.get('page',1,type=int)
     users = User.query.order_by(User.created_at.desc()).paginate(page=page,per_page=ROWS_PER_PAGE)
+    test_number = UserDay.query.count()
+    average = db.session.query(func.avg(UserDay.score)).scalar()
     if request.method == 'POST':
         data = request.form["search"]
         search = "%{}%".format(data)
         users = User.query.filter(User.name.like(search)).paginate(page=page,per_page=ROWS_PER_PAGE)
-    return render_template('admin/admin.html',users=users,users_number=users_number)
+    return render_template('admin/admin.html',users=users,users_number=users_number,test_number=test_number,average=average)
 
 @Admin.route("/admin/user/<int:user_id>",methods=['GET','POST'])
 @login_required
@@ -45,7 +47,7 @@ def user(user_id):
     notes = request.args.get('notes',1,type=int)
 
     user = User.query.filter_by(id=user_id).first()
-    day = Day.query.join(UserDay, Day.id == UserDay.day_id).add_columns(Day.number,Day.id,UserDay.text,UserDay.id,UserDay.score,UserDay.user_id,UserDay.created_at).filter(UserDay.user_id==user_id).paginate(page=words,per_page=10)
+    day = Day.query.join(UserDay, Day.id == UserDay.day_id).add_columns(Day.number,Day.id,UserDay.total,UserDay.text,UserDay.id,UserDay.score,UserDay.user_id,UserDay.created_at).filter(UserDay.user_id==user_id).paginate(page=words,per_page=10)
     if len(day.items) ==0:
         count_words = 0 
         note = Note.query.filter(Note.user_id==user.id).paginate(page=notes,per_page=3)
@@ -144,3 +146,11 @@ def deleteMaths(day_id,math_id):
     db.session.delete(math)
     db.session.commit()
     return redirect(url_for("Admin.editTest",day_id=day_id))
+
+@Admin.route("/admin/messages", methods=['GET','POST'])
+@login_required
+@admin_required
+def messages():
+    page = request.args.get('page',1,type=int)
+    users = User.query.order_by(User.created_at.desc()).paginate(page=page,per_page=ROWS_PER_PAGE)
+    return render_template('admin/messages.html',users=users)

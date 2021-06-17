@@ -5,12 +5,13 @@
   color:gray !important;
 }
 </style>
-     {% if message %}
-     <div class='box has-background-primary' style="margin:25px;">
-        <p class="title has-text-centered ">{{ message }}</p>
+   
+<section class="section is-centered" style="margin:25px; background-color:rgb(35, 37, 56); border-radius:4px;">
+  {% if message %}
+     <div class='box has-background-primary animate__animated animate__bounceIn' style="margin:25px;">
+        <p class=" has-text-centered ">{{ message }}</p>
         </div>
         {% endif %} 
-<section class="section is-centered" style="margin:25px; background-color:rgb(35, 37, 56); border-radius:4px;">
 <div class="box has-text-centered" style="height:40vh;background-color:rgb(35, 37, 56);color:white;">
     <p class="text" id="test"  style="margin-top:100px; font-size:40px; font-weight:500; ">Test</p>
 </div>
@@ -39,7 +40,7 @@ var words = {{dayTexts|safe}}
 var math_questions={{maths|safe}}
 var arr = words.concat(math_questions)
 var i = 0;
-var interval = 30
+var interval = 3000
 var form = document.getElementById('form')
 var submit = document.getElementById('subbtn')
 var test =document.getElementById('test')
@@ -62,8 +63,7 @@ console.log(words)
             prompt.style.display="block"
             
             
-            //var matma = prompt("Wpisz wynik działania matemtycznego")
-            // tutaj wstaw instrukcje kiedy ktos cos zle wpisac i nie dawaj kochanie i++
+         
             if (i > arr.length - 1){
                 this.clearInterval(time);
                 test.innerHTML = "Koniec testu. Wprowadź to co zapamiętałeś w poniższy formularz."
@@ -71,7 +71,8 @@ console.log(words)
                 test.style.padding = " 4vh auto";
                 form.style.display ="unset";
                 submit.style.display = "unset";
-                prompt.style.display="none"; 
+                prompt.style.display="none";
+                startbtn.style.dispaly="none"; 
             } 
         }
         i++;

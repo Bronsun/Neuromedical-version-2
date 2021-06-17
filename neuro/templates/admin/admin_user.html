@@ -1,4 +1,6 @@
+
 {% extends "admin/admin.html" %}
+
 {% block content %}
 <style>
    ::placeholder{
@@ -55,7 +57,9 @@ const repositionPage = () => {
 
 window.addEventListener('load', repositionPage);
 </script>
+
 <section class="section">
+
    <div class="box " style="background-color:rgb(35, 37, 56)">
       <h2 class="title has-text-white has-text-centered">📝&nbsp; Wyniki</h2>
    </div>
@@ -81,7 +85,7 @@ window.addEventListener('load', repositionPage);
                            <tr>
                               <td>{{days.number}}</td>
                               <td>{{days.text}}</td>
-                              <td>{{days.score}}/{{count_words}}</td>
+                              <td>{{days.score}}/{{days.total}}</td>
                               <td>{{days.created_at}}</td>
                               <td> 
                               <a class="delete has-background-danger is-medium test" href="/admin/answer/{{days.id}}/delete"></a>
@@ -274,6 +278,7 @@ window.addEventListener('load', repositionPage);
 </div>
 </div>
 </div>
+
 </section>
 <script>
    function killMessage() {

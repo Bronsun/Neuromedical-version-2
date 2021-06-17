@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html style="background-color: transparent" >
    <head>
@@ -112,6 +113,9 @@ transition:0.5s ease !important;
 .more:hover{
    color:#3273dc !important;
 }
+.is-active{
+    background-color:rgb(108, 102, 251) !important;
+}
 
 }
    </style>
@@ -121,87 +125,73 @@ transition:0.5s ease !important;
             <a class="navbar-item" href="/admin">
                <h1 class="text has-text-white"><strong>Neuromedical | Panel Admina </strong></h1>
             </a>
-            <a role="button" class="navbar-burger" style="color:white; border-radius:25px;background-color:rgb(35, 37, 56)" aria-label="menu" aria-expanded="false" data-target="menu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            </a>
+         
          </div>
-         <div id="menu" class="navbar-menu" style="color:white; border-radius:4px;background-color:transparent;">
-            <div class="navbar-start">
-    
-               <div class="navbar-item  is-hoverable">
-                  <a class="navbar-link has-text-white dodaj" style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);" >
-                  <i class="fas fa-tools" style="color:white;"></i>&nbsp; Narzędzia</a>
-                  <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);backdrop-filter: blur(5px);">
-                     <a class="navbar-item has-text-white navbarlinks test" href="/admin">
-              <i class="fas fa-users" style="color:white;"></i>&nbsp; Pacjenci
-               </a>
-               <a class="navbar-item has-text-white navbarlinks test" href="/admin/add">
-                    <i class="fas fa-plus" style="color:white;"></i>&nbsp; Dodaj osobę
-                     </a>
-               <hr class="navbar-divider" style="margin:10px;">
-                     <a class="navbar-item has-text-white navbarlinks test" href="/admin/test">
-                     <i class="fas fa-pen" style="color:white;"></i>&nbsp;  Edycja testu
-                     </a>
-                 
-                  </div>
-               </div>
-              
-            </div>
-             <div class="navbar-end">
-          
-            <div class="navbar-item">
-            <div class="navbar-item  is-hoverable">
-               <a class="navbar-link " style="border-radius:4px; color:white;background-color:rgb(35, 37, 56);">
-               <i class="fas fa-user" ></i> &nbsp; {{current_user.name}}</a>
-               <div class="navbar-dropdown" style="border-radius:4px;border-top:none;background-color: rgba(255, 255, 255, .15);  
-                  backdrop-filter: blur(5px);">
-                  <a class="navbar-item navbarlinks has-text-white test" style="border:none;"  href="/edit">
-                  👤&nbsp; Twoje dane
-                  </a>
-                    <a class="navbar-item navbarlinks has-text-white test" style="border:none;"  href="/panel">
-                  🎛&nbsp; Panel
-                  </a>
-                   <hr class="navbar-divider" style="margin:10px;">
-                   <a class="navbar-item navbarlinks has-text-white test " href="/documentation/overview/start/">
-               Pomoc
-               </a>
-                  <a class="navbar-item navbarlinkslogout test" style="border-radius:4px;" href="/logout">
-                  Wyloguj się
-                  </a>
-               </div>
-            </div>
-         </div>
-         </div>
-
-         </div>
-         </div>
+       
+         
       </nav>
-      {% block content %}
-      <section class="main-content columns is-fullheight">
+     
       
-         <div class="container column is-10">
+      <section class="main-content columns is-fullheight">
+    
+       <aside class="menu " style="margin:25px;background-color:rgb(35, 37, 56);padding:20px;border-radius:10px;">
+        <p class="menu-label">Narzędzia</p>
+        <ul class="menu-list ">
+            <li><a href="/admin" class="has-text-white test navbarlinks">
+                <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                Lista pacjentów
+            </a></li>
+            <li><a href="/admin/add" class="{%if active_page=="add"%}is-active{%else%}has-text-white navbarlinks{%endif%} test">
+                <span class="icon"><i class="fas fa-plus"></i></span>
+                Dodaj użytkownika
+            </a></li>
+            <li><a href="/admin/test" class="{%if active_page=="edit"%}is-active{%else%}has-text-white{%endif%} navbarlinks test">
+                <span class="icon"><i class="fas fa-pen"></i></span>
+                Edytuj test
+            </a></li>
+        </ul>
+        <p class="menu-label">Administrator</p>
+        <ul class="menu-list">
+            <li><a href="/admin/alert" class="{%if active_page=="alert"%}is-active{%else%}has-text-white{%endif%} navbarlinks test">
+                <span class="icon"><i class="fas fa-bell"></i></span>
+                Alerty <span class="tag is-info is-pulled-right">112</span>
+            </a></li>
+            <li><a href="/edit" class="has-text-white navbarlinks test">
+                <span class="icon"><i class="fas fa-user"></i></span>
+                Twoje dane
+            </a></li>
+          <li><a href="/logout" class="has-text-white navbarlinkslogout test">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                Wyloguj się
+            </a></li>
+        </ul>
+    </aside>
+</div>
+ <div class="column">
+     {% block content %}
+   
+         <div class="container column is-16">
+         
          <div class="section">
             <div class="container">
                <h2 class="title has-text-primary">List pacjentów</h2>
                <div class="columns has-text-centered">
                   <div class="column is-3">
-                     <div class="box has-background-primary">
+                     <div class="box has-background-info">
                         <h3 class="title is-2 has-text-white">{{users_number}}</h3>
                         <p class="subtitle has-text-white">Liczba pacjnetów</p>
                      </div>
                   </div>
                   <div class="column is-3">
-                     <div class="box has-background-success">
-                        <h3 class="title is-2 has-text-white">81</h3>
+                     <div class="box has-background-warning">
+                        <h3 class="title is-2 has-text-white">{{test_number}}</h3>
                         <p class="subtitle has-text-white">Rozwiązane testy</p>
                      </div>
                   </div>
                   <div class="column is-3">
-                     <div class="box has-background-danger has-text-white">
-                        <h3 class="title is-2 has-text-white">208</h3>
-                        <p class="subtitle has-text-white">Nowe zgłoszenia</p>
+                     <div class="box  has-text-white {% if average<10%} has-background-danger {%else%} has-background-success {%endif%}">
+                        <h3 class="title is-2 has-text-white">{{'%1.0f'| format(average)}}</h3>
+                        <p class="subtitle has-text-white">Średni wynik z testów</p>
                      </div>
                   </div>
                </div>
@@ -263,6 +253,7 @@ transition:0.5s ease !important;
                </div>
             </div>
          </div>
+         
          <nav style="margin:25px;">
             <div class="container">
             <div class="pagination" role="navigation" aria-label="pagination">
@@ -300,6 +291,7 @@ transition:0.5s ease !important;
             </div>
          </nav>
       </section>
+      </div>
       {% endblock content %}
       <script>
          document.addEventListener('DOMContentLoaded', function () {
