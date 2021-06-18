@@ -422,9 +422,11 @@ body {
                     Gratulacje wygrałeś 🎉🎉
                 </div>
                 <div class="content-2">
-                    <p>Wygrałeś w <span id=finalMove> </span> ruchach </p>
+                <form action='' method="POST">
+                    <p>Wygrałeś w <p id=finalMove> ruchach </p>
                     <p>w czasie <span id=totalTime> </span> </p>
                     <p>Ocena:  <span id=starRating></span></p>
+                </form>
                 </div>
                 <button id="play-again"onclick="playAgain()">
                     Zakończ 😄</a>
@@ -648,7 +650,7 @@ function congratulations(){
         //showing move, rating, time on modal
         document.getElementById("finalMove").innerHTML = moves;
         document.getElementById("starRating").innerHTML = starRating;
-        document.getElementById("totalTime").innerHTML = finalTime;
+        document.getElementById("totalTime").innerHTML = finalTime 
 
         //closeicon on modal
         closeModal();

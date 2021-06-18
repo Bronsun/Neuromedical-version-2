@@ -1,27 +1,102 @@
 {% extends "main.html" %}
 {% block content %}
+<style>
+::placeholder{
+  color:gray !important;
+}
+</style>
+   
+<section class="section is-centered" style="margin:25px; background-color:rgb(35, 37, 56); border-radius:4px;">
 
-<section class="section has-text-centered">
+<div class="box has-text-centered" style="height:40vh;background-color:rgb(35, 37, 56);color:white;">
+    <p class="text" id="test"  style="margin-top:100px; font-size:40px; font-weight:500; ">Test</p>
+</div>
+<form class="form" method="POST" action="/tests/words/">
+          
+        <div class = "submit">
+        
+        </div>
+       
+        <div class="buttons is-centered">
+         
+       
+    </div>
 
-<div class="box" style="border:none;outline:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white; text-align:center">
-<p class="text" id="test">Test pamięci krótkiej. Zostanie wyświetlona cyfra z przedziału od 0 - 100000. Twoim zadaniem jest wpisanie jej w ponizszy formularz po odpowiedzeniu serii pytań. Aby rozpocząć kliknij start</p>
+    </form>
+<div id="prompt" class="box has-text-centered" style="display:none;background-color: rgb(47, 46, 75);" ><input class="input has-text-centered" style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white;"id="mathanswer" placeholder="Wprowadź rozwiązanie", value="", onfocus="this.value=''"><button class="button is-primary" style="margin-top:25px;" id="okbtn" onclick='callInterval()'>OK</button></div>
+<div class="buttons is-centered">
+<button class="button is-center is-primary" id="startbtn" onclick="anim();callInterval();"><strong>Rozpocznij test</strong></button>
+<a class="button is-center is-danger" id="backbtn" href="/panel"><strong>Powrót do panelu</strong></a>
 </div>
-<div class="box" style="border:none;border-radius:0px; background-color:rgb(35, 37, 56); color:white;">
-<p>Liczba to: </p>
-<input class="input" style="border:none;outline:none;border-bottom:1px solid white;border-radius:0px; background-color:rgb(35, 37, 56); color:white; text-align:center"  placeholder="np.45"></input>
 </div>
-<button class="button is-primary" onclick="startTest()">Start</button>
 </section>
 
 <script>
-var test = document.getElementById('test')
+var words = [Math.floor(Math.random() * 1000000)];
+var questions= ["Ile nóg ma pies"]
+var arr = words.concat(questions)
+var i = 0;
+var interval = 3000
+var form = document.getElementById('form')
+var submit = document.getElementById('subbtn')
+var test =document.getElementById('test')
+var ok = document.getElementById('okbtn')
+var prompt = document.getElementById("prompt")
+var startbtn = document.getElementById("startbtn")
+form.style.display="none"
+submit.style.display="none"
 
-function startTest(){
-    var number = Math.ceil(Math.random()*100000)
-    test.innerHTML = number
+
+
+function callInterval() {
+// set a variable for setInterval
+console.log(words)
+	var time = setInterval(()=>{
+		test.innerHTML=arr[i];
+        if (i > words.length - 1){
+            interval=300;
+            this.clearInterval(time);
+            prompt.style.display="block"
+            
+            
+         
+            if (i > arr.length - 1){
+                this.clearInterval(time);
+                test.innerHTML = "Koniec testu. Wprowadź cyfrę, którą zapamiętałeś"
+                test.style.fontSize = "3vh";
+                test.style.padding = " 4vh auto";
+                form.style.display ="unset";
+                submit.style.display = "unset";
+                prompt.style.display="none";
+                startbtn.style.dispaly="none"; 
+            } 
+        }
+        i++;
+        }, interval);
+    
+}
+var count = 4;
+
+function anim() {
+    if (count > 0) {
+        
+        test.innerHTML = count
+        count--;
+        setTimeout(anim, 700);
+    }
+    else if (count ==1) {
+       
+        callInterval();
+    }
+    else{
+        startbtn.style.display = "none"
+    }
 }
 
+
+
 </script>
+
 
 
 {% endblock content %}
